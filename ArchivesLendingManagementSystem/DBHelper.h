@@ -22,10 +22,9 @@ public:
 	bool closeDB();
 	
 	bool checkLogin(string userName, string password);
-	bool checkIsRegistered(string userName);
 
 	user getUser(string userName);
-	vector<user> getAllUser(user _u);
+	vector<user> getAllUser();
 	bool checkUser(user _u);
 	bool addUser(user _u);
 	bool setUserPassword(user _u);

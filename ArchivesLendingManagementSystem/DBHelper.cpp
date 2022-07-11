@@ -121,7 +121,7 @@ user dbHelper::getUser(string userName)
 	}
 }
 
-vector<user> dbHelper::getAllUser(user _u)
+vector<user> dbHelper::getAllUser()
 {
 	try
 	{
@@ -283,7 +283,32 @@ file dbHelper::getFileByTitle(string fileTitle)
 {
 	try
 	{
-
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where fileTitle = '%1'").arg(fileTitle.c_str());
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				file ret = file(
+					qry.value(0).toString().toStdString(),
+					qry.value(1).toString().toStdString(),
+					myTime(qry.value(2).toString().toShort()),
+					myTime(qry.value(3).toString().toShort()),
+					qry.value(4).toString().toStdString(),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString().toShort(),
+					qry.value(7).toString().toShort()
+				);
+				//log
+				return ret;
+			}
+			else {
+				// log
+				return file();
+			}
+		}
+		else {
+			//log
+			return file();
+		}
 	}
 	catch (const std::exception& e)
 	{
@@ -294,27 +319,168 @@ file dbHelper::getFileByTitle(string fileTitle)
 
 vector<file> dbHelper::getAllFile()
 {
-	return vector<file>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable");
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next()) {
+				ret.push_back(
+					file(
+						qry.value(0).toString().toStdString(),
+						qry.value(1).toString().toStdString(),
+						myTime(qry.value(2).toString().toShort()),
+						myTime(qry.value(3).toString().toShort()),
+						qry.value(4).toString().toStdString(),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 vector<file> dbHelper::getFilesByUser(string userName)
 {
-	return vector<file>();
+	
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where userName = '%1'").arg(userName.c_str());
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					file(
+						qry.value(0).toString().toStdString(),
+						qry.value(1).toString().toStdString(),
+						myTime(qry.value(2).toString().toShort()),
+						myTime(qry.value(3).toString().toShort()),
+						qry.value(4).toString().toStdString(),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 vector<file> dbHelper::getFilesByTime(myTime start, myTime end)
 {
-	return vector<file>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable");
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next()) {
+				auto f = file(
+					qry.value(0).toString().toStdString(),
+					qry.value(1).toString().toStdString(),
+					myTime(qry.value(2).toString().toShort()),
+					myTime(qry.value(3).toString().toShort()),
+					qry.value(4).toString().toStdString(),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString().toShort(),
+					qry.value(7).toString().toShort()
+				);
+				myTime mt = f.getLoadTime();
+				
+				if (mt > start && mt < end) {
+					ret.push_back(f);
+				}
+			}
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::checkFile(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where fileTitle = '%1'");
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				//log
+				return true;
+			}
+			else {
+				//log
+				return false;
+			}
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::addFile(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs =
+			QString("insert into fileTable values('%1', '%2', '%3', '%4', '%5', %6, %7, %8)").
+			arg(_f.getFileTitle().c_str()).
+			arg(_f.getUserName().c_str()).
+			arg(_f.getLoadTime().getTimeStamp().c_str()).
+			arg(_f.getLoadTime().getTimeStamp().c_str()).
+			arg(_f.getFileContent().c_str()).
+			arg(_f.getFileType()).
+			arg(_f.getFileSecrecy()).
+			arg(_f.getIsBorrowed());
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileTitle(file _f)

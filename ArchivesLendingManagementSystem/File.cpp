@@ -8,74 +8,74 @@ file::file(string _fileTitle, string _userName, myTime _loadTime, myTime _saveTi
 {
 }
 
-void file::setFileTitle(string _fileTitle, user _u)
+void file::setFileTitle(string _fileTitle)
 {
 }
 
-string file::getFileTitle(user _u)
-{
-	return string();
-}
-
-void file::setUserName(string _userName, user _u)
-{
-}
-
-string file::getUserName(user _u)
+string file::getFileTitle()
 {
 	return string();
 }
 
-void file::setLoadTime(myTime _loadTime, user _u)
+void file::setUserName(string _userName)
 {
 }
 
-myTime file::getLoadTime(user _u)
+string file::getUserName()
+{
+	return string();
+}
+
+void file::setLoadTime(myTime _loadTime)
+{
+}
+
+myTime file::getLoadTime()
 {
 	return myTime();
 }
 
-void file::setSaveTime(myTime _saveTime, user _u)
+void file::setSaveTime(myTime _saveTime)
 {
 }
 
-myTime file::getSaveTime(user _u)
+myTime file::getSaveTime()
 {
 	return myTime();
 }
 
-void file::setFileContent(string _fileContent, user _u)
+void file::setFileContent(string _fileContent)
 {
 }
 
-string file::getFileContent(user _u)
+string file::getFileContent()
 {
 	return string();
 }
 
-void file::setFileType(bool _fileType, user _u)
+void file::setFileType(bool _fileType)
 {
 }
 
-bool file::getFileType(user _u)
+bool file::getFileType()
 {
 	return false;
 }
 
-void file::setFileSecrecy(int _fileSecrecy, user _u)
+void file::setFileSecrecy(int _fileSecrecy)
 {
 }
 
-int file::getFileSecrecy(user _u)
+int file::getFileSecrecy()
 {
 	return 0;
 }
 
-void file::setIsBorrowed(bool _isBorrowed, user _u)
+void file::setIsBorrowed(bool _isBorrowed)
 {
 }
 
-bool file::getIsBorrowed(user _u)
+bool file::getIsBorrowed()
 {
 	return false;
 }
