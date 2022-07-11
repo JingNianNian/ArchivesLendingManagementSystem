@@ -1,0 +1,8 @@
+﻿  ArchivesLendingManagementSystem.cpp
+  DBHelper.cpp
+C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\DBHelper.cpp(184): warning C4715: “dbHelper::checkUser”: 不是所有的控件路径都返回值
+C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\DBHelper.cpp(122): warning C4715: “dbHelper::getUser”: 不是所有的控件路径都返回值
+C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\DBHelper.cpp(155): warning C4715: “dbHelper::getAllUser”: 不是所有的控件路径都返回值
+C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\DBHelper.cpp(87): warning C4715: “dbHelper::checkLogin”: 不是所有的控件路径都返回值
+C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\DBHelper.cpp(209): warning C4715: “dbHelper::addUser”: 不是所有的控件路径都返回值
+  ArchivesLendingManagementSystem.vcxproj -> C:\Users\User\Desktop\ArchivesLendingManagementSystem\x64\Debug\ArchivesLendingManagementSystem.exe

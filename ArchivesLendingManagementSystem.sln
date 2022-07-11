@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArchivesLendingManagementSystem", "ArchivesLendingManagementSystem\ArchivesLendingManagementSystem.vcxproj", "{3DE19F59-F756-4E6E-AF83-7F1DBCEBE6BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DE19F59-F756-4E6E-AF83-7F1DBCEBE6BA}.Debug|x64.ActiveCfg = Debug|x64
+		{3DE19F59-F756-4E6E-AF83-7F1DBCEBE6BA}.Debug|x64.Build.0 = Debug|x64
+		{3DE19F59-F756-4E6E-AF83-7F1DBCEBE6BA}.Release|x64.ActiveCfg = Release|x64
+		{3DE19F59-F756-4E6E-AF83-7F1DBCEBE6BA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA00E5E7-F9AF-4979-8F01-87DDBC5EB307}
+	EndGlobalSection
+EndGlobal
