@@ -9,7 +9,6 @@ dbHelper::dbHelper()
 
 bool dbHelper::openDB(QString host, QString odbcName, QString userName, QString password)
 {
-
 	db.setHostName(host);
 	db.setDatabaseName(odbcName);
 	db.setUserName(userName);
@@ -312,8 +311,8 @@ file dbHelper::getFileByTitle(QString fileTitle)
 				file ret = file(
 					qry.value(0).toString(),
 					qry.value(1).toString(),
-					myTime(qry.value(2).toString().toShort()),
-					myTime(qry.value(3).toString().toShort()),
+					myTime(qry.value(2).toString().toInt()),
+					myTime(qry.value(3).toString().toInt()),
 					qry.value(4).toString(),
 					qry.value(5).toString().toShort(),
 					qry.value(6).toString().toShort(),
@@ -352,8 +351,8 @@ vector<file> dbHelper::getAllFile()
 					file(
 						qry.value(0).toString(),
 						qry.value(1).toString(),
-						myTime(qry.value(2).toString().toShort()),
-						myTime(qry.value(3).toString().toShort()),
+						myTime(qry.value(2).toString().toInt()),
+						myTime(qry.value(3).toString().toInt()),
 						qry.value(4).toString(),
 						qry.value(5).toString().toShort(),
 						qry.value(6).toString().toShort(),
@@ -497,6 +496,12 @@ bool dbHelper::addFile(file _f)
 			arg(_f.getFileType()).
 			arg(_f.getFileSecrecy()).
 			arg(_f.getIsBorrowed());
+		if (qry.exec(qs)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	catch (const std::exception& e)
 	{
@@ -507,7 +512,26 @@ bool dbHelper::addFile(file _f)
 
 bool dbHelper::setFileUserName(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set userName = '%1' where fileTitle = '%2'").
+			arg(_f.getUserName()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileLoadTime(file _f)

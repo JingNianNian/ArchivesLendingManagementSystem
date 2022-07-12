@@ -1,6 +1,6 @@
 #pragma once
 #include "ALMSHeaderFiles.h"
-
+#include <qstring.h>
 class user
 {
 private:

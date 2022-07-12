@@ -4,26 +4,34 @@ file::file()
 {
 }
 
-file::file(string _fileTitle, string _userName, myTime _loadTime, myTime _saveTime, string _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed)
+file::file(QString _fileTitle, QString _userName, myTime _loadTime, myTime _saveTime, QString _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed)
+{
+	fileTitle = _fileTitle;
+	userName = _userName;
+	loadTime = _loadTime;
+	saveTime = _saveTime;
+	fileContent = _fileContent;
+	fileType = _fileType;
+	fileSecrecy = _fileSecrecy;
+	isBorrowed = _isBorrowed;
+}
+
+void file::setFileTitle(QString _fileTitle)
 {
 }
 
-void file::setFileTitle(string _fileTitle)
+QString file::getFileTitle()
+{
+	return fileTitle;
+}
+
+void file::setUserName(QString _userName)
 {
 }
 
-string file::getFileTitle()
+QString file::getUserName()
 {
-	return string();
-}
-
-void file::setUserName(string _userName)
-{
-}
-
-string file::getUserName()
-{
-	return string();
+	return userName;
 }
 
 void file::setLoadTime(myTime _loadTime)
@@ -32,7 +40,7 @@ void file::setLoadTime(myTime _loadTime)
 
 myTime file::getLoadTime()
 {
-	return myTime();
+	return loadTime;
 }
 
 void file::setSaveTime(myTime _saveTime)
@@ -41,16 +49,16 @@ void file::setSaveTime(myTime _saveTime)
 
 myTime file::getSaveTime()
 {
-	return myTime();
+	return saveTime;
 }
 
-void file::setFileContent(string _fileContent)
+void file::setFileContent(QString _fileContent)
 {
 }
 
-string file::getFileContent()
+QString file::getFileContent()
 {
-	return string();
+	return fileContent;
 }
 
 void file::setFileType(bool _fileType)
@@ -59,7 +67,7 @@ void file::setFileType(bool _fileType)
 
 bool file::getFileType()
 {
-	return false;
+	return fileType;
 }
 
 void file::setFileSecrecy(int _fileSecrecy)
@@ -68,7 +76,7 @@ void file::setFileSecrecy(int _fileSecrecy)
 
 int file::getFileSecrecy()
 {
-	return 0;
+	return fileSecrecy;
 }
 
 void file::setIsBorrowed(bool _isBorrowed)
@@ -77,7 +85,7 @@ void file::setIsBorrowed(bool _isBorrowed)
 
 bool file::getIsBorrowed()
 {
-	return false;
+	return isBorrowed;
 }
 
 file::~file()
