@@ -1,2 +1,1 @@
-﻿  ArchivesLendingManagementSystem.cpp
-  ArchivesLendingManagementSystem.vcxproj -> C:\Users\User\Desktop\ArchivesLendingManagementSystem\x64\Debug\ArchivesLendingManagementSystem.exe
+﻿C:\Users\DELL\Desktop\Github  Files\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem.vcxproj(50,5): error MSB4019: 找不到导入的项目“C:\Users\DELL\Desktop\Github  Files\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\QtMsBuild\Qt.props”。请确认 Import 声明“C:\Users\DELL\Desktop\Github  Files\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\QtMsBuild\Qt.props”中的表达式正确，且文件位于磁盘上。
