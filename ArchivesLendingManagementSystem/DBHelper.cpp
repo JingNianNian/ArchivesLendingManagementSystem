@@ -458,7 +458,7 @@ bool dbHelper::checkFile(file _f)
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = QString("select * from fileTable where fileTitle = '%1'");
+		QString qs = QString("select * from fileTable where fileTitle = '%1'").arg(_f.getFileTitle());
 		if (qry.exec(qs)) {
 			if (qry.next()) {
 				//log
@@ -536,47 +536,215 @@ bool dbHelper::setFileUserName(file _f)
 
 bool dbHelper::setFileLoadTime(file _f)
 {
-	return false;
+	try
+	{3
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set loadTime = '%1' where fileTitle = '%2'").
+			arg(_f.getLoadTime).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileSaveTime(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set saveTime = '%1' where fileTitle = '%2'").
+			arg(_f.getSaveTime).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileContent(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set FileContent = '%1' where fileTitle = '%2'").
+			arg(_f.getFileContent).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileType(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set fileType = '%1' where fileTitle = '%2'").
+			arg(_f.getFileType()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileSecrecy(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set fileSecrecy = '%1' where fileTitle = '%2'").
+			arg(_f.getFileSecrecy()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileIsBorrowed(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set isBorrowed = '%1' where fileTitle = '%2'").
+			arg(_f.getIsBorrowed()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::deleteFile(file _f)
 {
+	try
+	{
+		QSqlQuery qry(db);
+		//QString qs = QString("drop table fileTable");
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 	return false;
 }
 
 borrowRecord dbHelper::getRecordByGuid(QString guid)
 {
+
 	return borrowRecord();
 }
 
 vector<borrowRecord> dbHelper::getAllRecord()
 {
-	return vector<borrowRecord>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable");
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next()) {
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(4).toString().toShort(),
+						qry.value(5).toString()
+						
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 }
 
 vector<borrowRecord> dbHelper::getRecordByUser(user _u)
