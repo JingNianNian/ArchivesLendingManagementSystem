@@ -537,10 +537,10 @@ bool dbHelper::setFileUserName(file _f)
 bool dbHelper::setFileLoadTime(file _f)
 {
 	try
-	{3
+	{
 		QSqlQuery qry(db);
 		QString qs = QString("update fileTable set loadTime = '%1' where fileTitle = '%2'").
-			arg(_f.getLoadTime).
+			arg(_f.getLoadTime().getTimeStamp()).
 			arg(_f.getFileTitle());
 		if (qry.exec(qs)) {
 			//log
@@ -564,7 +564,7 @@ bool dbHelper::setFileSaveTime(file _f)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update fileTable set saveTime = '%1' where fileTitle = '%2'").
-			arg(_f.getSaveTime).
+			arg(_f.getSaveTime().getTimeStamp()).
 			arg(_f.getFileTitle());
 		if (qry.exec(qs)) {
 			//log
@@ -588,7 +588,7 @@ bool dbHelper::setFileContent(file _f)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update fileTable set FileContent = '%1' where fileTitle = '%2'").
-			arg(_f.getFileContent).
+			arg(_f.getFileContent()).
 			arg(_f.getFileTitle());
 		if (qry.exec(qs)) {
 			//log
@@ -683,7 +683,7 @@ bool dbHelper::deleteFile(file _f)
 	try
 	{
 		QSqlQuery qry(db);
-		//QString qs = QString("drop table fileTable");
+		QString qs = QString("delete from fileTable where fileTitle = '%1'").arg(_f.getFileTitle());
 		if (qry.exec(qs)) {
 			//log
 			return true;
@@ -726,7 +726,7 @@ vector<borrowRecord> dbHelper::getAllRecord()
 						myTime(qry.value(3).toString().toInt()),
 						myTime(qry.value(4).toString().toInt()),
 						qry.value(4).toString().toShort(),
-						qry.value(5).toString()
+						qry.value(5).toString().toShort()
 						
 					)
 				);
