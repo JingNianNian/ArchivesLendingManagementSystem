@@ -491,7 +491,7 @@ bool dbHelper::addFile(file _f)
 			arg(_f.getFileTitle()).
 			arg(_f.getUserName()).
 			arg(_f.getLoadTime().getTimeStamp()).
-			arg(_f.getLoadTime().getTimeStamp()).
+			arg(_f.getSaveTime().getTimeStamp()).
 			arg(_f.getFileContent()).
 			arg(_f.getFileType()).
 			arg(_f.getFileSecrecy()).
@@ -692,21 +692,52 @@ bool dbHelper::deleteFile(file _f)
 			//log
 			return false;
 		}
-
 	}
 	catch (const std::exception& e)
 	{
 		//log
 		qDebug() << e.what();
 	}
-	
-	return false;
 }
 
 borrowRecord dbHelper::getRecordByGuid(QString guid)
 {
 
-	return borrowRecord();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where guid = '%1'").arg(guid);
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+					borrowRecordTable ret = borrowRecordTable(
+					qry.value(0).toString(),
+					qry.value(1).toString(),
+					qry.value(2).toString(),
+					myTime(qry.value(3).toString().toInt()),
+					myTime(qry.value(4).toString().toInt()),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString()
+				);
+				//log
+				return ret;
+			}
+			else {
+				// log
+				return borrowRecord();
+			}
+		}
+		else {
+			//log
+			return borrowRecord();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+
+	
 }
 
 vector<borrowRecord> dbHelper::getAllRecord()
@@ -725,8 +756,8 @@ vector<borrowRecord> dbHelper::getAllRecord()
 						qry.value(2).toString(),
 						myTime(qry.value(3).toString().toInt()),
 						myTime(qry.value(4).toString().toInt()),
-						qry.value(4).toString().toShort(),
-						qry.value(5).toString().toShort()
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort()
 						
 					)
 				);
@@ -749,7 +780,41 @@ vector<borrowRecord> dbHelper::getAllRecord()
 
 vector<borrowRecord> dbHelper::getRecordByUser(user _u)
 {
-	return vector<borrowRecord>();
+
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where userName = '%1'").arg(_u.userName);
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 }
 
 vector<borrowRecord> dbHelper::getUnDealRecord()
@@ -764,7 +829,39 @@ vector<borrowRecord> dbHelper::getDealRecord()
 
 vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 {
-	return vector<borrowRecord>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where fileTitle = '%1'").arg(_f.fileTitle);
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 vector<borrowRecord> dbHelper::getOutOfLimitTimeRecord(myTime _t)
@@ -774,37 +871,179 @@ vector<borrowRecord> dbHelper::getOutOfLimitTimeRecord(myTime _t)
 
 bool dbHelper::checkRecord(borrowRecord _bR)
 {
-	return false;
+
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from  borrowRecordTable where guid = '%1'").arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				//log
+				return true;
+			}
+			else {
+				//log
+				return false;
+			}
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 }
 
 bool dbHelper::addRecord(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs =
+			QString("insert into borrowRecordTable values('%1', '%2', '%3', '%4', '%5', %6, %7)").
+			arg(_bR.getGuid()).
+			arg(_bR.getUserName()).
+			arg(_bR.getFileTitle()).
+			arg(_bR.getBorrowTime().getTimeStamp()).
+			arg(_bR.getReturnTime().getTimeStamp()).
+			arg(_bR.getIsDealWith()).
+			arg(_bR.getDealResult()).
+		
+		if (qry.exec(qs)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setBorrowTime(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set borrowTime = '%1' where guid = '%2'").
+			arg(_bR.getBorrowTime()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setReturnTime(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set returnTime = '%1' where guid = '%2'").
+			arg(_bR.getBorrowTime()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setIsDealWith(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set isDealWith = '%1' where guid = '%2'").
+			arg(_bR.getIsDealWith()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setDealResult(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set dealResult = '%1' where guid = '%2'").
+			arg(_bR.getDealResult()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::deleteRecord(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("delete borrowRecordTable  where guid = '%1'").arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 dbHelper::~dbHelper()
