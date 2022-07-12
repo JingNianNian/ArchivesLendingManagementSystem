@@ -1,11 +1,11 @@
 #pragma once
-#include <string>
+#include <qstring.h>
 using namespace std;
 class paths
 {
 public:
-	static string applicationBasePath;
-	static string applicationLogPath;
-	static string applicationLogoPath;
-	static string applicationRecoverPath;
+	static QString applicationBasePath;
+	static QString applicationLogPath;
+	static QString applicationLogoPath;
+	static QString applicationRecoverPath;
 };

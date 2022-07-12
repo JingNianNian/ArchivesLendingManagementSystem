@@ -1,5 +1,6 @@
 #pragma once
 #include "ALMSHeaderFiles.h"
+#include <qstring.h>
 
 class myTime
 {
@@ -15,18 +16,18 @@ private:
     void setData();
 public:
 	myTime();//默认初始化
-    myTime(int _timeStamp);//通过string初始化
+    myTime(int _timeStamp);//通过timeStamp初始化
     myTime(int _hh, int _mm, int _ss);//初始化一个时间段
 
 	~myTime();
 
-    string getTimeStamp();
+    QString getTimeStamp();
     // ToDo : 返回时间
-    string getTime();
+    QString getTime();
     // ToDo : 返回日期
-    string getDate();
+    QString getDate();
     // ToDo : 返回日期＋时间
-    string getDateAndTime();
+    QString getDateAndTime();
     // ToDo : 使用运算符重载实现当前时间加上一个时间段
     myTime& operator += (const myTime& rhs);
     // ToDo : 使用运算符重载实现两个时间的比较

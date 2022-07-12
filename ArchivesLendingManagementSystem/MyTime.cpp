@@ -35,22 +35,24 @@ myTime::~myTime()
 {
 }
 
-string myTime::getTimeStamp()
+QString myTime::getTimeStamp()
 {
-	return to_string(timeStamp);
+	return	QString(to_string(timeStamp).c_str());
 }
 
-string myTime::getTime()
+QString myTime::getTime()
 {
-	return (hh < 10 ? "0" : "") + to_string(hh) + ":" + (mm < 10 ? "0" : "") + to_string(mm) + ":" + (ss < 10 ? "0" : "") + to_string(ss);
+	auto ret = (hh < 10 ? "0" : "") + to_string(hh) + ":" + (mm < 10 ? "0" : "") + to_string(mm) + ":" + (ss < 10 ? "0" : "") + to_string(ss);
+	return QString(ret.c_str());
 }
 
-string myTime::getDate()
+QString myTime::getDate()
 {
-	return to_string(year) + "-" + to_string(month) + "-" + to_string(day);
+	auto ret = to_string(year) + "-" + to_string(month) + "-" + to_string(day);
+	return QString(ret.c_str());
 }
 
-string myTime::getDateAndTime()
+QString myTime::getDateAndTime()
 {
 	return getDate() + " " + getTime();
 }

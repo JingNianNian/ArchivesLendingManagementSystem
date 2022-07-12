@@ -18,26 +18,26 @@ private:
 public:
 	dbHelper();
 
-	bool openDB(string host, string odbcName, string userName, string password);
+	bool openDB(QString host, QString odbcName, QString userName, QString password);
 	bool closeDB();
 	
-	bool checkLogin(string userName, string password);
+	bool checkLogin(QString userName, QString password);
 
-	user getUser(string userName);
+	user getUser(QString userName);
 	vector<user> getAllUser();
 	bool checkUser(user _u);
 	bool addUser(user _u);
 	bool setUserPassword(user _u);
 	bool setUserLevel(user _u);
 	bool setUserPhoneNumber(user _u);
+	bool deleteUser(user _u);
 
-	file getFileByTitle(string fileTitle);
+	file getFileByTitle(QString fileTitle);
 	vector<file> getAllFile();
-	vector<file> getFilesByUser(string userName);
+	vector<file> getFilesByUser(QString userName);
 	vector<file> getFilesByTime(myTime start, myTime end);
 	bool checkFile(file _f);
 	bool addFile(file _f);
-	bool setFileTitle(file _f);
 	bool setFileUserName(file _f);
 	bool setFileLoadTime(file _f);
 	bool setFileSaveTime(file _f);
@@ -45,8 +45,9 @@ public:
 	bool setFileType(file _f);
 	bool setFileSecrecy(file _f);
 	bool setFileIsBorrowed(file _f);
+	bool deleteFile(file _f);
 
-	borrowRecord getRecordByGuid(string guid);
+	borrowRecord getRecordByGuid(QString guid);
 	vector<borrowRecord> getAllRecord();
 	vector<borrowRecord> getRecordByUser(user _u);
 	vector<borrowRecord> getUnDealRecord();
@@ -59,6 +60,7 @@ public:
 	bool setReturnTime(borrowRecord _bR);
 	bool setIsDealWith(borrowRecord _bR);
 	bool setDealResult(borrowRecord _bR);
+	bool deleteRecord(borrowRecord _bR);
 	
 	~dbHelper();
 };
