@@ -4,80 +4,88 @@ file::file()
 {
 }
 
-file::file(string _fileTitle, string _userName, myTime _loadTime, myTime _saveTime, string _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed)
+file::file(QString _fileTitle, QString _userName, myTime _loadTime, myTime _saveTime, QString _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed)
+{
+	fileTitle = _fileTitle;
+	userName = _userName;
+	loadTime = _loadTime;
+	saveTime = _saveTime;
+	fileContent = _fileContent;
+	fileType = _fileType;
+	fileSecrecy = _fileSecrecy;
+	isBorrowed = _isBorrowed;
+}
+
+void file::setFileTitle(QString _fileTitle)
 {
 }
 
-void file::setFileTitle(string _fileTitle, user _u)
+QString file::getFileTitle()
+{
+	return fileTitle;
+}
+
+void file::setUserName(QString _userName)
 {
 }
 
-string file::getFileTitle(user _u)
+QString file::getUserName()
 {
-	return string();
+	return userName;
 }
 
-void file::setUserName(string _userName, user _u)
-{
-}
-
-string file::getUserName(user _u)
-{
-	return string();
-}
-
-void file::setLoadTime(myTime _loadTime, user _u)
+void file::setLoadTime(myTime _loadTime)
 {
 }
 
-myTime file::getLoadTime(user _u)
+myTime file::getLoadTime()
 {
-	return myTime();
+	return loadTime;
 }
 
-void file::setSaveTime(myTime _saveTime, user _u)
-{
-}
-
-myTime file::getSaveTime(user _u)
-{
-	return myTime();
-}
-
-void file::setFileContent(string _fileContent, user _u)
+void file::setSaveTime(myTime _saveTime)
 {
 }
 
-string file::getFileContent(user _u)
+myTime file::getSaveTime()
 {
-	return string();
+	return saveTime;
 }
 
-void file::setFileType(bool _fileType, user _u)
-{
-}
-
-bool file::getFileType(user _u)
-{
-	return false;
-}
-
-void file::setFileSecrecy(int _fileSecrecy, user _u)
+void file::setFileContent(QString _fileContent)
 {
 }
 
-int file::getFileSecrecy(user _u)
+QString file::getFileContent()
 {
-	return 0;
+	return fileContent;
 }
 
-void file::setIsBorrowed(bool _isBorrowed, user _u)
+void file::setFileType(bool _fileType)
 {
 }
 
-bool file::getIsBorrowed(user _u)
+bool file::getFileType()
 {
-	return false;
+	return fileType;
+}
+
+void file::setFileSecrecy(int _fileSecrecy)
+{
+}
+
+int file::getFileSecrecy()
+{
+	return fileSecrecy;
+}
+
+void file::setIsBorrowed(bool _isBorrowed)
+{
+}
+
+bool file::getIsBorrowed()
+{
+	return isBorrowed;
 }
 
 file::~file()

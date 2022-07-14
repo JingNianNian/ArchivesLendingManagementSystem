@@ -3,19 +3,21 @@
 #include "User.h"
 #include "MyTime.h"
 #include "File.h"
+#include <qstring.h>
 
 class borrowRecord
 {
 private:
-	string guid;
-	string userName;
-	string fileTitle;
+	QString guid;
+	QString userName;
+	QString fileTitle;
 	myTime borrowTime;
 	myTime returnTime;
 	bool isDealWith;
 	bool dealResult;
 public:
 	borrowRecord();
+	borrowRecord(QString _guid, QString _userName, QString _fileTitle, myTime _borrowTime, myTime _returnTime, bool _isDealWith = false, bool _dealResult = false);
 
 
 

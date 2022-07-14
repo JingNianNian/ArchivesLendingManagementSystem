@@ -6,7 +6,7 @@ user::user()
 	userLevel = 2;
 }
 
-user::user(string _userName, string _passwordMd5, string _userPhoneNumber, int _userLevel)
+user::user(QString _userName, QString _passwordMd5, QString _userPhoneNumber, int _userLevel)
 {
 	userName = _userName;
 	passwordMd5 = _passwordMd5;
@@ -14,7 +14,7 @@ user::user(string _userName, string _passwordMd5, string _userPhoneNumber, int _
 	userLevel = _userLevel;
 }
 
-void user::setUserName(string _userName)
+void user::setUserName(QString _userName)
 {
 	try
 	{
@@ -27,12 +27,12 @@ void user::setUserName(string _userName)
 	}
 }
 
-string user::getUserName()
+QString user::getUserName()
 {
 	return userName;
 }
 
-void user::setUserPassword(string _userPasswordMd5)
+void user::setUserPassword(QString _userPasswordMd5)
 {
 	try
 	{
@@ -45,12 +45,12 @@ void user::setUserPassword(string _userPasswordMd5)
 	}
 }
 
-string user::getUserPassword()
+QString user::getUserPassword()
 {
 	return passwordMd5;
 }
 
-void user::setUserPhoneNumber(string _userPhoneNumber)
+void user::setUserPhoneNumber(QString _userPhoneNumber)
 {
 	try
 	{
@@ -63,7 +63,7 @@ void user::setUserPhoneNumber(string _userPhoneNumber)
 	}
 }
 
-string user::getUserPhoneNumber()
+QString user::getUserPhoneNumber()
 {
 	return userPhoneNumber;
 }

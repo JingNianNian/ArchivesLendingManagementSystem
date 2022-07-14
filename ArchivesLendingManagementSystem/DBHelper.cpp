@@ -7,13 +7,12 @@ dbHelper::dbHelper()
 	
 }
 
-bool dbHelper::openDB(string host, string odbcName, string userName, string password)
+bool dbHelper::openDB(QString host, QString odbcName, QString userName, QString password)
 {
-
-	db.setHostName(host.c_str());
-	db.setDatabaseName(odbcName.c_str());
-	db.setUserName(userName.c_str());
-	db.setPassword(password.c_str());
+	db.setHostName(host);
+	db.setDatabaseName(odbcName);
+	db.setUserName(userName);
+	db.setPassword(password);
 
 	if (db.open()) {
 		// log successed
@@ -42,17 +41,17 @@ bool dbHelper::closeDB()
 
 }
 
-bool dbHelper::checkLogin(string userName, string password)
+bool dbHelper::checkLogin(QString userName, QString password)
 {
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = ("select * from userTable where userName = '" + userName + "'").c_str();
+		QString qs = QString("select * from userTable where userName = '%1'").arg(userName);
 		if (qry.exec(qs))
 		{
 			if (qry.next()) 
 			{
-				if (password == qry.value(1).toString().toStdString()) 
+				if (password == qry.value(1).toString())
 				{
 					//log user success login
 					qDebug() << "login successed";
@@ -86,19 +85,19 @@ bool dbHelper::checkLogin(string userName, string password)
 
 }
 
-user dbHelper::getUser(string userName)
+user dbHelper::getUser(QString userName)
 {
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = ("select * from userTable where userName = '" + userName + "'").c_str();
+		QString qs = QString("select * from userTable where userName = '%1'").arg(userName);
 		if (qry.exec(qs))
 		{
 			if (qry.next()) {
 				user ret = user(
-					qry.value(0).toString().toStdString(), 
-					qry.value(1).toString().toStdString(), 
-					qry.value(2).toString().toStdString(), 
+					qry.value(0).toString(), 
+					qry.value(1).toString(), 
+					qry.value(2).toString(), 
 					qry.value(3).toString().toShort()
 				);
 				//log ok
@@ -121,7 +120,7 @@ user dbHelper::getUser(string userName)
 	}
 }
 
-vector<user> dbHelper::getAllUser(user _u)
+vector<user> dbHelper::getAllUser()
 {
 	try
 	{
@@ -132,9 +131,9 @@ vector<user> dbHelper::getAllUser(user _u)
 			vector<user> ret;
 			while (qry.next()) {
 				ret.push_back(user(
-					qry.value(0).toString().toStdString(),
-					qry.value(1).toString().toStdString(),
-					qry.value(2).toString().toStdString(),
+					qry.value(0).toString(),
+					qry.value(1).toString(),
+					qry.value(2).toString(),
 					qry.value(3).toString().toShort()
 				));
 			}
@@ -158,9 +157,9 @@ bool dbHelper::checkUser(user _u)
 {
 	try
 	{
-		QString name = _u.getUserName().c_str();
+		QString userName = _u.getUserName();
 		QSqlQuery qry(db);
-		QString qs = "select * from userTable where userName = '" + name + "'";
+		QString qs = QString("select * from userTable where userName = '%1'").arg(userName);
 		if (qry.exec(qs)) {
 			if (qry.next()) {
 				//log ok
@@ -189,9 +188,9 @@ bool dbHelper::addUser(user _u)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("insert into userTable values('%1', '%2', '%3', %4)").
-			arg(_u.getUserName().c_str()).
-			arg(_u.getUserPassword().c_str()).
-			arg(_u.getUserPhoneNumber().c_str()).
+			arg(_u.getUserName()).
+			arg(_u.getUserPassword()).
+			arg(_u.getUserPhoneNumber()).
 			arg(_u.getUserLevel());
 		if (qry.exec(qs)) {
 			//log
@@ -214,8 +213,8 @@ bool dbHelper::setUserPassword(user _u)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update userTable set userPassword = '%1' where userName = '%2'").
-			arg(_u.getUserPassword().c_str()).
-			arg(_u.getUserName().c_str());
+			arg(_u.getUserPassword()).
+			arg(_u.getUserName());
 		if (qry.exec(qs)) {
 			//log
 			return true;
@@ -239,7 +238,7 @@ bool dbHelper::setUserLevel(user _u)
 		QSqlQuery qry(db);
 		QString qs = QString("update userTable set userLevel = %1 where userName = '%2'").
 			arg(_u.getUserLevel()).
-			arg(_u.getUserName().c_str());
+			arg(_u.getUserName());
 		if (qry.exec(qs)) {
 			//log
 			return true;
@@ -261,8 +260,8 @@ bool dbHelper::setUserPhoneNumber(user _u)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update userTable set userPhoneNumber = '%1' where userName = '%2'").
-			arg(_u.getUserPhoneNumber().c_str()).
-			arg(_u.getUserName().c_str());
+			arg(_u.getUserPhoneNumber()).
+			arg(_u.getUserName());
 		if (qry.exec(qs)) {
 			//log
 			return true;
@@ -279,11 +278,58 @@ bool dbHelper::setUserPhoneNumber(user _u)
 	}
 }
 
-file dbHelper::getFileByTitle(string fileTitle)
+bool dbHelper::deleteUser(user _u)
 {
 	try
 	{
+		QSqlQuery qry(db);
+		QString qs = QString("delete userTable where userName = '%1'").arg(_u.getUserName());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+}
 
+file dbHelper::getFileByTitle(QString fileTitle)
+{
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where fileTitle = '%1'").arg(fileTitle);
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				file ret = file(
+					qry.value(0).toString(),
+					qry.value(1).toString(),
+					myTime(qry.value(2).toString().toInt()),
+					myTime(qry.value(3).toString().toInt()),
+					qry.value(4).toString(),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString().toShort(),
+					qry.value(7).toString().toShort()
+				);
+				//log
+				return ret;
+			}
+			else {
+				// log
+				return file();
+			}
+		}
+		else {
+			//log
+			return file();
+		}
 	}
 	catch (const std::exception& e)
 	{
@@ -294,82 +340,481 @@ file dbHelper::getFileByTitle(string fileTitle)
 
 vector<file> dbHelper::getAllFile()
 {
-	return vector<file>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable");
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next()) {
+				ret.push_back(
+					file(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						myTime(qry.value(2).toString().toInt()),
+						myTime(qry.value(3).toString().toInt()),
+						qry.value(4).toString(),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
-vector<file> dbHelper::getFilesByUser(string userName)
+vector<file> dbHelper::getFilesByUser(QString userName)
 {
-	return vector<file>();
+	
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where userName = '%1'").arg(userName);
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					file(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						myTime(qry.value(2).toString().toShort()),
+						myTime(qry.value(3).toString().toShort()),
+						qry.value(4).toString(),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 vector<file> dbHelper::getFilesByTime(myTime start, myTime end)
 {
-	return vector<file>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable");
+		if (qry.exec(qs)) {
+			vector<file> ret;
+			while (qry.next()) {
+				auto f = file(
+					qry.value(0).toString(),
+					qry.value(1).toString(),
+					myTime(qry.value(2).toString().toShort()),
+					myTime(qry.value(3).toString().toShort()),
+					qry.value(4).toString(),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString().toShort(),
+					qry.value(7).toString().toShort()
+				);
+				myTime mt = f.getLoadTime();
+				
+				if (mt > start && mt < end) {
+					ret.push_back(f);
+				}
+			}
+			return ret;
+		}
+		else {
+			//log
+			return vector<file>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::checkFile(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from fileTable where fileTitle = '%1'").arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				//log
+				return true;
+			}
+			else {
+				//log
+				return false;
+			}
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::addFile(file _f)
 {
-	return false;
-}
-
-bool dbHelper::setFileTitle(file _f)
-{
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs =
+			QString("insert into fileTable values('%1', '%2', '%3', '%4', '%5', %6, %7, %8)").
+			arg(_f.getFileTitle()).
+			arg(_f.getUserName()).
+			arg(_f.getLoadTime().getTimeStamp()).
+			arg(_f.getSaveTime().getTimeStamp()).
+			arg(_f.getFileContent()).
+			arg(_f.getFileType()).
+			arg(_f.getFileSecrecy()).
+			arg(_f.getIsBorrowed());
+		if (qry.exec(qs)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileUserName(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set userName = '%1' where fileTitle = '%2'").
+			arg(_f.getUserName()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileLoadTime(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set loadTime = '%1' where fileTitle = '%2'").
+			arg(_f.getLoadTime().getTimeStamp()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileSaveTime(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set saveTime = '%1' where fileTitle = '%2'").
+			arg(_f.getSaveTime().getTimeStamp()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileContent(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set FileContent = '%1' where fileTitle = '%2'").
+			arg(_f.getFileContent()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileType(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set fileType = '%1' where fileTitle = '%2'").
+			arg(_f.getFileType()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileSecrecy(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set fileSecrecy = '%1' where fileTitle = '%2'").
+			arg(_f.getFileSecrecy()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setFileIsBorrowed(file _f)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update fileTable set isBorrowed = '%1' where fileTitle = '%2'").
+			arg(_f.getIsBorrowed()).
+			arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
-borrowRecord dbHelper::getRecordByGuid(string guid)
+bool dbHelper::deleteFile(file _f)
 {
-	return borrowRecord();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("delete from fileTable where fileTitle = '%1'").arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+}
+
+borrowRecord dbHelper::getRecordByGuid(QString guid)
+{
+
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where guid = '%1'").arg(guid);
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+					borrowRecord ret = borrowRecord(
+					qry.value(0).toString(),
+					qry.value(1).toString(),
+					qry.value(2).toString(),
+					myTime(qry.value(3).toString().toInt()),
+					myTime(qry.value(4).toString().toInt()),
+					qry.value(5).toString().toShort(),
+					qry.value(6).toString().toShort()
+				);
+				//log
+				return ret;
+			}
+			else {
+				// log
+				return borrowRecord();
+			}
+		}
+		else {
+			//log
+			return borrowRecord();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+
+	
 }
 
 vector<borrowRecord> dbHelper::getAllRecord()
 {
-	return vector<borrowRecord>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable");
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next()) {
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort()
+						
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 }
 
 vector<borrowRecord> dbHelper::getRecordByUser(user _u)
 {
-	return vector<borrowRecord>();
+
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where userName = '%1'").arg(_u.getUserName());
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
 }
 
 vector<borrowRecord> dbHelper::getUnDealRecord()
@@ -384,7 +829,39 @@ vector<borrowRecord> dbHelper::getDealRecord()
 
 vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 {
-	return vector<borrowRecord>();
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where fileTitle = '%1'").arg(_f.getFileTitle());
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next())
+			{
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort()
+					)
+				);
+			}
+			//log
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 vector<borrowRecord> dbHelper::getOutOfLimitTimeRecord(myTime _t)
@@ -394,35 +871,188 @@ vector<borrowRecord> dbHelper::getOutOfLimitTimeRecord(myTime _t)
 
 bool dbHelper::checkRecord(borrowRecord _bR)
 {
-	return false;
-}
 
+	try
+	{/*
+		QSqlQuery qry(db);
+		QString qs = QString("select * from  borrowRecordTable where guid = '%1'").arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			if (qry.next()) {
+				//log
+				return true;
+			}
+			else {
+				//log
+				return false;
+			}
+		}
+		else {
+			//log
+			return false;
+		}*/
+		return false;
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+	
+}
+/*
 bool dbHelper::addRecord(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs =
+			QString("insert into borrowRecordTable values('%1', '%2', '%3', '%4', '%5', %6, %7)").
+			arg(_bR.getGuid()).
+			arg(_bR.getUserName()).
+			arg(_bR.getFileTitle()).
+			arg(_bR.getBorrowTime().getTimeStamp()).
+			arg(_bR.getReturnTime().getTimeStamp()).
+			arg(_bR.getIsDealWith()).
+			arg(_bR.getDealResult());
+		
+		if (qry.exec(qs)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setBorrowTime(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set borrowTime = '%1' where guid = '%2'").
+			arg(_bR.getBorrowTime()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setReturnTime(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set returnTime = '%1' where guid = '%2'").
+			arg(_bR.getBorrowTime()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setIsDealWith(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set isDealWith = '%1' where guid = '%2'").
+			arg(_bR.getIsDealWith()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 bool dbHelper::setDealResult(borrowRecord _bR)
 {
-	return false;
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set dealResult = '%1' where guid = '%2'").
+			arg(_bR.getDealResult()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+}
+
+bool dbHelper::deleteRecord(borrowRecord _bR)
+{
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("delete borrowRecordTable  where guid = '%1'").arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
 }
 
 dbHelper::~dbHelper()
 {
 
+}
+*/
+
+dbHelper::~dbHelper()
+{
 }

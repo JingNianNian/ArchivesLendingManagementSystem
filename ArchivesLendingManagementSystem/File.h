@@ -7,34 +7,34 @@ using namespace std;
 class file
 {
 private:
-	string fileTitle;
-	string userName;
+	QString fileTitle;
+	QString userName;
 	myTime loadTime;
 	myTime saveTime;
-	string fileContent;
+	QString fileContent;
 	bool fileType;
 	int fileSecrecy;
 	bool isBorrowed;
 
 public:
 	file();
-	file(string _fileTitle, string _userName, myTime _loadTime, myTime _saveTime, string _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed);
-	void setFileTitle(string _fileTitle, user _u);
-	string getFileTitle(user _u);
-	void setUserName(string _userName, user _u);
-	string getUserName(user _u);
-	void setLoadTime(myTime _loadTime, user _u);
-	myTime getLoadTime(user _u);
-	void setSaveTime(myTime _saveTime, user _u);
-	myTime getSaveTime(user _u);
-	void setFileContent(string _fileContent, user _u);
-	string getFileContent(user _u);
-	void setFileType(bool _fileType, user _u);
-	bool getFileType(user _u);
-	void setFileSecrecy(int _fileSecrecy, user _u);
-	int getFileSecrecy(user _u);
-	void setIsBorrowed(bool _isBorrowed, user _u);
-	bool getIsBorrowed(user _u);
+	file(QString _fileTitle, QString _userName, myTime _loadTime, myTime _saveTime, QString _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed);
+	void setFileTitle(QString _fileTitle);
+	QString getFileTitle();
+	void setUserName(QString _userName);
+	QString getUserName();
+	void setLoadTime(myTime _loadTime);
+	myTime getLoadTime();
+	void setSaveTime(myTime _saveTime);
+	myTime getSaveTime();
+	void setFileContent(QString _fileContent);
+	QString getFileContent();
+	void setFileType(bool _fileType);
+	bool getFileType();
+	void setFileSecrecy(int _fileSecrecy);
+	int getFileSecrecy();
+	void setIsBorrowed(bool _isBorrowed);
+	bool getIsBorrowed();
 
 	~file();
 };
