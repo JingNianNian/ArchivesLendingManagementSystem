@@ -1,10 +1,10 @@
-#include "ArchivesLendingManagementSystem.h"
+#include "LoginWindow.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    ArchivesLendingManagementSystem w;
+    LoginWindow w;
     w.show();
     return a.exec();
 }

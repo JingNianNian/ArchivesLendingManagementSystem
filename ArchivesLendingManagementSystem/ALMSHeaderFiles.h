@@ -1,7 +1,7 @@
 #ifndef _ALMSHEADERFILES_H_
 #define _ALMSHEADERFILES_H_
 #pragma once
-
+#pragma execution_character_set("utf-8")
 #include <cctype>
 #include <cerrno>
 #include <cfloat>

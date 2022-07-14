@@ -88,27 +88,39 @@
     <ClCompile Include="borrowRecord.cpp" />
     <ClCompile Include="DBHelper.cpp" />
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="LoginWindow.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MD5Algorithm.cpp" />
     <ClCompile Include="MyTime.cpp" />
+    <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
-    <QtRcc Include="ArchivesLendingManagementSystem.qrc" />
-    <QtUic Include="ArchivesLendingManagementSystem.ui" />
-    <QtMoc Include="ArchivesLendingManagementSystem.h" />
-    <ClCompile Include="ArchivesLendingManagementSystem.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="LoginWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="LoginWindow.ui" />
+    <QtUic Include="MainWindow.ui" />
+    <QtUic Include="SignUpWindow.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="LoginWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ALMSHeaderFiles.h" />
     <ClInclude Include="borrowRecoed.h" />
     <ClInclude Include="DataController.h" />
     <ClInclude Include="DBHelper.h" />
+    <ClInclude Include="File.h" />
+    <QtMoc Include="SignUpWindow.h" />
+    <QtMoc Include="MainWindow.h" />
     <ClInclude Include="MD5Algorithm.h" />
+    <ClInclude Include="MyTime.h" />
     <ClInclude Include="MyUtility.h" />
     <ClInclude Include="Paths.h" />
-    <ClInclude Include="MyTime.h" />
     <ClInclude Include="User.h" />
-    <ClInclude Include="File.h" />
-    <ClInclude Include="UserLogin.h" />
+    <ClInclude Include="CurMessage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

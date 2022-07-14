@@ -5,10 +5,6 @@
 #define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
-#define A 0x67452301
-#define B 0xefcdab89
-#define C 0x98badcfe
-#define D 0x10325476
 
 class MD5Algorithm
 {
@@ -20,7 +16,10 @@ private:
     unsigned int btemp;
     unsigned int ctemp;
     unsigned int dtemp;
-
+    const int A = 0x67452301;
+    const int B = 0xefcdab89;
+    const int C = 0x98badcfe;
+    const int D = 0x10325476;
     const unsigned int k[64] = {
         0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
         0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501, 0x698098d8,
