@@ -1,11 +1,14 @@
 #pragma once
 #include "ALMSHeaderFiles.h"
-#include "User.h"
+#include "dbhelper.h"
 class curMessage {
-private:
-	static user& curUser;
 public:
-	static void setCurUser(user& _u) {
+	static user curUser;
+	static dbHelper db;
+	static void setCurUser(user _u) {
 		curUser = _u;
-	}
+	};
+	static void setDbHelper(dbHelper _db) {
+		db = _db;
+	};
 };

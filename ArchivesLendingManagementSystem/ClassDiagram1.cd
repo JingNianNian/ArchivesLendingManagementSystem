@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="borrowRecord">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAQAAAAAQEAAAAEAiAAAQAAAEAAAA=</HashCode>
+      <FileName>borrowRecoed.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="curMessage">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAQAAAAEAAAAAQAAAAAA=</HashCode>
+      <FileName>CurMessage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dbHelper">
+    <Position X="6.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AASQAwgAApCYAAABkCFAQCAKkAAQYAAKAQIQKJkgAEQ=</HashCode>
+      <FileName>DBHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="file">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CARAAgggAAIAAAAAgACCAIEEgAAABAAAhAQAAAEQ4AA=</HashCode>
+      <FileName>File.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginWindow">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAEAIgAAAIAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>LoginWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainWindow">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAIQAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MD5Algorithm">
+    <Position X="13.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAEAQgAAAqACAAAAACAAIAAAAAAiIAgpIECBAA=</HashCode>
+      <FileName>MD5Algorithm.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="myTime">
+    <Position X="11.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIEkCQAAAAAAAAEAgAAAAQAAAAQAwAAQAgAgAAEAQAA=</HashCode>
+      <FileName>MyTime.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="paths">
+    <Position X="3.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAACAAAAAgAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Paths.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SignUpWindow">
+    <Position X="1" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SignUpWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="user">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAgAAAAIAAIAAAAABAECAACAAIABAAAAAAEQAQA=</HashCode>
+      <FileName>User.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

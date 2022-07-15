@@ -6,7 +6,9 @@ LoginWindow::LoginWindow(QWidget *parent)
 {
 
 	ui.setupUi(this);
+	dbHelper db;
 	db.openDB("localhost", "ALMSdb", "ALMStest", "123456");
+	curMessage::setDbHelper(db);
 }
 
 LoginWindow::~LoginWindow()
@@ -22,9 +24,9 @@ int LoginWindow::onSignInButtonClicked(bool cked)
 	else {
 		MD5Algorithm pmd5 = MD5Algorithm(ui.passwordLineEdit->text().toStdString());
 		QString userName = ui.userNameLineEdit->text(), password = QString(pmd5.returnMD5().c_str());
-		if (db.checkLogin(userName, password)) {
+		if (curMessage::db.checkLogin(userName, password)) {
 			QMessageBox::about(NULL, "Message", "µÇÂ½³É¹¦£¡");
-			user curUser = db.getUser(userName);
+			user curUser = curMessage::db.getUser(userName);
 
 			MainWindow* mw = new MainWindow();
 			mw->setGeometry(this->geometry());

@@ -86,6 +86,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="borrowRecord.cpp" />
+    <ClCompile Include="CurMessage.cpp" />
     <ClCompile Include="DBHelper.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="LoginWindow.cpp" />
@@ -121,6 +122,9 @@
     <ClInclude Include="Paths.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="CurMessage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
