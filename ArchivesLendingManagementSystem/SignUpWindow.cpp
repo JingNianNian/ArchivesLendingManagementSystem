@@ -2,6 +2,7 @@
 #include "CurMessage.h"
 #include "qmessagebox.h"
 #include "MD5Algorithm.h"
+
 SignUpWindow::SignUpWindow(QWidget *parent)
 	: QWidget(parent)
 {

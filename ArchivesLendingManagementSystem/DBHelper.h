@@ -17,6 +17,7 @@ private:
 	bool open = false;
 public:
 	dbHelper();
+	QSqlDatabase getDbObj();
 
 	bool openDB(QString host, QString odbcName, QString userName, QString password);
 	bool closeDB();
@@ -50,6 +51,7 @@ public:
 	bool deleteFile(file _f);
 
 	borrowRecord getRecordByGuid(QString guid);
+	vector<borrowRecord> getRecordByUser(QString userName);
 	vector<borrowRecord> getAllRecord();
 	vector<borrowRecord> getRecordByUser(user _u);
 	vector<borrowRecord> getRocordByFileTitle(file _f);

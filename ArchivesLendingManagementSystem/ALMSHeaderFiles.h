@@ -2,6 +2,7 @@
 #define _ALMSHEADERFILES_H_
 #pragma once
 #pragma execution_character_set("utf-8")
+#pragma warning(disable:26817)
 #include <cctype>
 #include <cerrno>
 #include <cfloat>
@@ -69,6 +70,8 @@
 #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
+
 #include "mylog.h"
+#include<objbase.h>
 using namespace std;
 #endif

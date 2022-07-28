@@ -31,6 +31,10 @@ myTime::myTime(time_t _timeStamp)
 
 myTime::myTime(int _hh, int _mm, int _ss)
 {
+	year = 0;
+	timeStamp = 0;
+	month = 0;
+	day = 0;
 	hh = _hh;
 	mm = _mm;
 	ss = _ss;

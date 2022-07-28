@@ -6,7 +6,9 @@ public:
 	static void deleteFiles(vector<QString> list);
 	static void upUserLevel(vector<QString> list);
 	static void downUserLevel(vector<QString> list);
+	static void returnRecord(vector<QString> list);
 	static void deleteUser(vector<QString> list);
+	static void checkRecordOverdue();
 	static void dealRecord(vector<QString> list, bool isOk);
 	static vector<QString> getOverdueFiles();
 };

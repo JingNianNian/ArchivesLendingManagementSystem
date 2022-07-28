@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>281</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onDeleteSelectedFileButtonClicked</FUNCTION>
+    <DECORATED>?onDeleteSelectedFileButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>277</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>293</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onUpLevelButtonClicked</FUNCTION>
+    <DECORATED>?onUpLevelButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>290</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>305</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onDeleteUserButtonClicked</FUNCTION>
+    <DECORATED>?onDeleteUserButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>302</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>317</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onAcceptRecordButtonClicked</FUNCTION>
+    <DECORATED>?onAcceptRecordButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>314</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>329</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onRefuseRecordButtonClicked</FUNCTION>
+    <DECORATED>?onRefuseRecordButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>326</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>MainWindow.cpp</FILENAME>
+      <LINE>341</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26817</DEFECTCODE>
+    <DESCRIPTION>range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。</DESCRIPTION>
+    <FUNCTION>MainWindow::onDownLevelButtonClicked</FUNCTION>
+    <DECORATED>?onDownLevelButtonClicked@MainWindow@@AEAAXXZ</DECORATED>
+    <FUNCLINE>338</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -2,6 +2,14 @@
 
 file::file()
 {
+	fileTitle = QString();
+	userName = QString();
+	loadTime = myTime();
+	saveTime = myTime();
+	fileContent = QString();
+	fileType = 0;
+	fileSecrecy = 0;
+	isBorrowed = 0;
 }
 
 file::file(QString _fileTitle, QString _userName, myTime _loadTime, myTime _saveTime, QString _fileContent, bool _fileType, int _fileSecrecy, bool _isBorrowed)

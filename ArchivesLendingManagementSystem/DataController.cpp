@@ -72,6 +72,42 @@ void dataControl::downUserLevel(vector<QString> list)
 	}
 }
 
+void dataControl::checkRecordOverdue()
+{
+	auto allrec = curMessage::db.getAllRecord();
+	auto list = vector<QString>();
+	for (auto _bR : allrec) {
+		list.push_back(_bR.getGuid());
+	}
+	auto now = myTime();
+	auto returnList = vector<QString>();
+	for (auto guid : list) {
+		auto _bR = curMessage::db.getRecordByGuid(guid);
+		if (_bR.getIsDealWith() && _bR.getDealResult() && !_bR.getIsReturn()) {
+			if (_bR.getReturnTime() <= now) {
+				returnList.push_back(_bR.getGuid());
+			}
+		}
+	}
+	returnRecord(returnList);
+}
+
+void dataControl::returnRecord(vector<QString> list)
+{
+	auto returnTime = myTime();
+	for (auto guid : list) {
+		auto _bR = curMessage::db.getRecordByGuid(guid);
+		if (_bR.getIsDealWith() && _bR.getDealResult() && !_bR.getIsReturn()) {
+			_bR.setIsReturn(true);
+			_bR.setReturnTime(returnTime);
+			qDebug() << _bR.getBorrowTime().getDateAndTime();
+			qDebug() << _bR.getReturnTime().getDateAndTime();
+			curMessage::db.deleteRecord(_bR);
+			curMessage::db.addRecord(_bR);
+		}
+	}
+}
+
 void dataControl::deleteUser(vector<QString> list)
 {
 	if (curMessage::curUser.getUserLevel() == 0) {

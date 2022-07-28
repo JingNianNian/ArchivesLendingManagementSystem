@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>File.cpp</FILENAME>
+      <LINE>3</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>未初始化变量 file::fileType。始终初始化成员变量(type.6)。</DESCRIPTION>
+    <FUNCTION>file::{ctor}</FUNCTION>
+    <DECORATED>??0file@@QEAA@XZ</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>file::fileType</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>File.cpp</FILENAME>
+      <LINE>3</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>未初始化变量 file::fileSecrecy。始终初始化成员变量(type.6)。</DESCRIPTION>
+    <FUNCTION>file::{ctor}</FUNCTION>
+    <DECORATED>??0file@@QEAA@XZ</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>file::fileSecrecy</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\User\Desktop\ArchivesLendingManagementSystem\ArchivesLendingManagementSystem\</FILEPATH>
+      <FILENAME>File.cpp</FILENAME>
+      <LINE>3</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>未初始化变量 file::isBorrowed。始终初始化成员变量(type.6)。</DESCRIPTION>
+    <FUNCTION>file::{ctor}</FUNCTION>
+    <DECORATED>??0file@@QEAA@XZ</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>file::isBorrowed</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

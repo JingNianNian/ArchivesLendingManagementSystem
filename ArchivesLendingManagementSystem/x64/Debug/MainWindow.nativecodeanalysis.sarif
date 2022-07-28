@@ -1,0 +1,285 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 12,
+                  "endLine": 281,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onDeleteSelectedFileButtonClicked",
+                  "decoratedName": "?onDeleteSelectedFileButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 293,
+                  "startColumn": 12,
+                  "endLine": 293,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onUpLevelButtonClicked",
+                  "decoratedName": "?onUpLevelButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 305,
+                  "startColumn": 12,
+                  "endLine": 305,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onDeleteUserButtonClicked",
+                  "decoratedName": "?onDeleteUserButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 317,
+                  "startColumn": 12,
+                  "endLine": 317,
+                  "endColumn": 70
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onAcceptRecordButtonClicked",
+                  "decoratedName": "?onAcceptRecordButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 329,
+                  "startColumn": 12,
+                  "endLine": 329,
+                  "endColumn": 70
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onRefuseRecordButtonClicked",
+                  "decoratedName": "?onRefuseRecordButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26817",
+          "message": {
+            "text": "range-for 循环中变量“i”的可能开销较高的副本。请考虑将其设为常量引用(es.71)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+                },
+                "region": {
+                  "startLine": 341,
+                  "startColumn": 12,
+                  "endLine": 341,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MainWindow::onDownLevelButtonClicked",
+                  "decoratedName": "?onDownLevelButtonClicked@MainWindow@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.32.31332.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MainWindow.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "862969ae2dba082ec89398b4ba031376f0da0fb2d1ac7efeeffc61e728fffead"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/mainwindow.h"
+          },
+          "hashes": {
+            "sha-256": "1721d2034a72115c93c0d46a7d6ca5daa15363e546231a931d4252afc416a432"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/curmessage.h"
+          },
+          "hashes": {
+            "sha-256": "85802a99f4ce0896d95b76097c9c12156197413a5734e3694b4bdfb9165ef600"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/almsheaderfiles.h"
+          },
+          "hashes": {
+            "sha-256": "5684abc034baa40f998a4d2b268422fcaf78325d8fd3ac23ca4740152b44f9af"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/mylog.h"
+          },
+          "hashes": {
+            "sha-256": "5863f6b9514ad8ae00f834620f9d10a57184ab5fa98f2cbb8f4dfbcbc9031772"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/dbhelper.h"
+          },
+          "hashes": {
+            "sha-256": "f5865b293a5cc4332827b8afd0d53daf2f6a59537ac31e7dd5e55548fea010e0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/user.h"
+          },
+          "hashes": {
+            "sha-256": "77a9481cf09100db3d21b2dc1a6fe43fcba8e0c3218b8642781cb14c369e7a14"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/file.h"
+          },
+          "hashes": {
+            "sha-256": "8859dc359196faed04a889520d83c1bd0999ef9c81a0521e146b1b03ce01bc6e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/mytime.h"
+          },
+          "hashes": {
+            "sha-256": "2e72b3dc618d7357108e7f7beb62a8f69d69d385dcf34fc1b518d954bc3b9a16"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/borrowrecoed.h"
+          },
+          "hashes": {
+            "sha-256": "9a7c7e86a9f787b2258a36b1b37a3c9d56d9eac0fcf15e2cb95410e031b508a4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/datacontroller.h"
+          },
+          "hashes": {
+            "sha-256": "00c94a1b09d8fd0b59153991c5d0c63d930ece9bac8b8c318b87665b71491aee"
+          }
+        }
+      ]
+    }
+  ]
+}

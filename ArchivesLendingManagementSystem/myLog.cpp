@@ -17,7 +17,7 @@ void myLog::setLogPath()
 	}
 	str += QString("\\ALMS\\");
 	if (_access(str.toStdString().c_str(), 0) == -1){
-		_mkdir(str.toStdString().c_str());
+		auto _ = _mkdir(str.toStdString().c_str());
 	}
 	str += QString("ALMS_log_") + myTime().getTimeStamp() + QString(".log");
 	myLogPath = str;

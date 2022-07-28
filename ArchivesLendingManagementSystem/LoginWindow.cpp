@@ -1,5 +1,5 @@
 #include "LoginWindow.h"
-
+#include "MyUtility.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -12,7 +12,7 @@ LoginWindow::LoginWindow(QWidget *parent)
 		exit(0);
 	}
 	myLog::setLogPath();
-	
+	//qDebug() << MD5Algorithm("admin").returnMD5().c_str();
 	curMessage::setDbHelper(db);
 }
 

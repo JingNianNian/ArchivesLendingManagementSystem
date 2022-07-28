@@ -95,6 +95,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MD5Algorithm.cpp" />
     <ClCompile Include="MyTime.cpp" />
+    <ClCompile Include="ReturnTextWidget.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="main.cpp" />
@@ -105,6 +106,7 @@
   <ItemGroup>
     <QtUic Include="LoginWindow.ui" />
     <QtUic Include="MainWindow.ui" />
+    <QtUic Include="ReturnTextWidget.ui" />
     <QtUic Include="SignUpWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +124,7 @@
     <ClInclude Include="MD5Algorithm.h" />
     <ClInclude Include="MyTime.h" />
     <ClInclude Include="MyUtility.h" />
+    <QtMoc Include="ReturnTextWidget.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="CurMessage.h" />
   </ItemGroup>

@@ -6,6 +6,11 @@ dbHelper::dbHelper()
 	
 }
 
+QSqlDatabase dbHelper::getDbObj()
+{
+	return this->db;
+}
+
 bool dbHelper::openDB(QString host, QString odbcName, QString userName, QString password)
 {
 	db.setHostName(host);
@@ -80,6 +85,7 @@ bool dbHelper::checkLogin(QString userName, QString password)
 	{
 		//log exception
 		qDebug() << e.what();
+		return false;
 	}
 
 }
@@ -152,6 +158,7 @@ user dbHelper::getUser(QString userName)
 	catch (const std::exception& e)
 	{
 		qDebug() << e.what();
+		return user();
 	}
 }
 
@@ -185,6 +192,7 @@ vector<user> dbHelper::getAllUser()
 	{
 		//log runtime error
 		qDebug() << e.what();
+		return vector<user>();
 	}
 }
 
@@ -214,6 +222,7 @@ bool dbHelper::checkUser(user _u)
 	{
 		//log runtime error
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -239,6 +248,7 @@ bool dbHelper::addUser(user _u)
 	catch (const std::exception& e)
 	{
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -263,6 +273,7 @@ bool dbHelper::setUserPassword(user _u)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -286,6 +297,7 @@ bool dbHelper::setUserLevel(user _u)
 	catch (const std::exception& e)
 	{
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -310,6 +322,7 @@ bool dbHelper::setUserPhoneNumber(user _u)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -321,12 +334,12 @@ bool dbHelper::deleteUser(user _u)
 		QString qs = QString("delete userTable where userName = '%1'").arg(_u.getUserName());
 		if (qry.exec(qs)) {
 			//log
-			myLog::writeInfoLog(QString("User %1 is successfully deleted From [dbHelper::deleteUser]").arg(_u.getUserName()));
+			myLog::writeInfoLog(QString("User %1 is successfully deleted [From dbHelper::deleteUser]").arg(_u.getUserName()));
 			return true;
 		}
 		else {
 			//log
-			myLog::writeInfoLog(QString("User %1 is unsuccessfully deleted From [dbHelper::deleteUser]").arg(_u.getUserName()));
+			myLog::writeInfoLog(QString("User %1 is unsuccessfully deleted [From dbHelper::deleteUser]").arg(_u.getUserName()));
 			return false;
 		}
 	}
@@ -334,6 +347,7 @@ bool dbHelper::deleteUser(user _u)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -372,6 +386,7 @@ file dbHelper::getFileByTitle(QString fileTitle)
 	{
 		//log
 		qDebug() << e.what();
+		return file();
 	}
 }
 
@@ -409,6 +424,8 @@ vector<file> dbHelper::getAllFile()
 	{
 		//log
 		qDebug() << e.what();
+		return vector<file>();
+
 	}
 }
 
@@ -448,6 +465,7 @@ vector<file> dbHelper::getFilesByUser(QString userName)
 	{
 		//log
 		qDebug() << e.what();
+		return vector<file>();
 	}
 }
 
@@ -487,6 +505,7 @@ vector<file> dbHelper::getFilesByTime(myTime start, myTime end)
 	{
 		//log
 		qDebug() << e.what();
+		return vector<file>();
 	}
 }
 
@@ -515,6 +534,7 @@ bool dbHelper::checkFile(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -544,6 +564,7 @@ bool dbHelper::addFile(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -568,6 +589,7 @@ bool dbHelper::setFileUserName(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -592,6 +614,7 @@ bool dbHelper::setFileLoadTime(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -616,6 +639,7 @@ bool dbHelper::setFileSaveTime(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -640,6 +664,7 @@ bool dbHelper::setFileContent(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -664,6 +689,7 @@ bool dbHelper::setFileType(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -688,6 +714,7 @@ bool dbHelper::setFileSecrecy(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -712,6 +739,7 @@ bool dbHelper::setFileIsBorrowed(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -734,6 +762,7 @@ bool dbHelper::deleteFile(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -753,7 +782,8 @@ borrowRecord dbHelper::getRecordByGuid(QString guid)
 					myTime(qry.value(3).toString().toInt()),
 					myTime(qry.value(4).toString().toInt()),
 					qry.value(5).toString().toShort(),
-					qry.value(6).toString().toShort()
+					qry.value(6).isNull() ? 0 : qry.value(6).toString().toShort(),
+					qry.value(7).isNull() ? 0 : qry.value(7).toString().toShort()
 				);
 				//log
 				return ret;
@@ -772,9 +802,47 @@ borrowRecord dbHelper::getRecordByGuid(QString guid)
 	{
 		//log
 		qDebug() << e.what();
+		return borrowRecord();
 	}
 
 	
+}
+
+vector<borrowRecord> dbHelper::getRecordByUser(QString userName)
+{
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("select * from borrowRecordTable where userName = '%1'").arg(userName);
+		if (qry.exec(qs)) {
+			vector<borrowRecord> ret;
+			while (qry.next()) {
+				ret.push_back(
+					borrowRecord(
+						qry.value(0).toString(),
+						qry.value(1).toString(),
+						qry.value(2).toString(),
+						myTime(qry.value(3).toString().toInt()),
+						myTime(qry.value(4).toString().toInt()),
+						qry.value(5).toString().toShort(),
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
+					)
+				);
+			}
+			return ret;
+		}
+		else {
+			//log
+			return vector<borrowRecord>();
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+		return vector<borrowRecord>();
+	}
 }
 
 vector<borrowRecord> dbHelper::getAllRecord()
@@ -794,7 +862,8 @@ vector<borrowRecord> dbHelper::getAllRecord()
 						myTime(qry.value(3).toString().toInt()),
 						myTime(qry.value(4).toString().toInt()),
 						qry.value(5).toString().toShort(),
-						qry.value(6).toString().toShort()
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
 						
 					)
 				);
@@ -811,6 +880,7 @@ vector<borrowRecord> dbHelper::getAllRecord()
 	{
 		//log
 		qDebug() << e.what();
+		return vector<borrowRecord>();
 	}
 	
 }
@@ -834,7 +904,8 @@ vector<borrowRecord> dbHelper::getRecordByUser(user _u)
 						myTime(qry.value(3).toString().toInt()),
 						myTime(qry.value(4).toString().toInt()),
 						qry.value(5).toString().toShort(),
-						qry.value(6).toString().toShort()
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
 					)
 				);
 			}
@@ -850,6 +921,7 @@ vector<borrowRecord> dbHelper::getRecordByUser(user _u)
 	{
 		//log
 		qDebug() << e.what();
+		return vector<borrowRecord>();
 	}
 	
 }
@@ -872,7 +944,8 @@ vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 						myTime(qry.value(3).toString().toInt()),
 						myTime(qry.value(4).toString().toInt()),
 						qry.value(5).toString().toShort(),
-						qry.value(6).toString().toShort()
+						qry.value(6).toString().toShort(),
+						qry.value(7).toString().toShort()
 					)
 				);
 			}
@@ -888,6 +961,7 @@ vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 	{
 		//log
 		qDebug() << e.what();
+		return vector<borrowRecord>();
 	}
 }
 
@@ -918,6 +992,7 @@ bool dbHelper::checkRecord(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 	
 }
@@ -935,8 +1010,8 @@ bool dbHelper::addRecord(borrowRecord _bR)
 			arg(_bR.getBorrowTime().getTimeStamp()).
 			arg(_bR.getReturnTime().getTimeStamp()).
 			arg(_bR.getIsDealWith()).
-			arg("NULL").
-			arg("NULL");
+			arg(_bR.getIsDealWith() ? (_bR.getDealResult() ? "1" : "0") : "NULL").
+			arg(_bR.getIsDealWith() ? (_bR.getIsReturn() ? "1" : "0") : "NULL");
 		
 		if (qry.exec(qs)) {
 			return true;
@@ -949,6 +1024,7 @@ bool dbHelper::addRecord(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -973,6 +1049,7 @@ bool dbHelper::setBorrowTime(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -997,6 +1074,7 @@ bool dbHelper::setReturnTime(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -1021,6 +1099,7 @@ bool dbHelper::setIsDealWith(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -1045,6 +1124,7 @@ bool dbHelper::setDealResult(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -1069,6 +1149,7 @@ bool dbHelper::setIsReturn(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 
@@ -1091,6 +1172,7 @@ bool dbHelper::deleteRecord(borrowRecord _bR)
 	{
 		//log
 		qDebug() << e.what();
+		return false;
 	}
 }
 

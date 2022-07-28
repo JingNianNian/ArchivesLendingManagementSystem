@@ -1,0 +1,87 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "算术溢出: 使用 4 字节值上的运算符 * ，然后将结果转换到 8 字节值。在调用运算符 * 之前将值强制转换为宽类型可避免溢出(io.2)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MD5Algorithm.cpp"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 47
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "MD5Algorithm::add",
+                  "decoratedName": "?add@MD5Algorithm@@AEAAPEAIV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.32.31332.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/Desktop/ArchivesLendingManagementSystem/ArchivesLendingManagementSystem/MD5Algorithm.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "7b07390324efcb257cf3e8e3c97a0d1ae96b30a4502d457aaa8f5149c851929f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/md5algorithm.h"
+          },
+          "hashes": {
+            "sha-256": "9bbed205dfee17fe02a8b33b5b24f1faefa3a5dcfbff8748527d706764d97805"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/almsheaderfiles.h"
+          },
+          "hashes": {
+            "sha-256": "5684abc034baa40f998a4d2b268422fcaf78325d8fd3ac23ca4740152b44f9af"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/desktop/archiveslendingmanagementsystem/archiveslendingmanagementsystem/mylog.h"
+          },
+          "hashes": {
+            "sha-256": "5863f6b9514ad8ae00f834620f9d10a57184ab5fa98f2cbb8f4dfbcbc9031772"
+          }
+        }
+      ]
+    }
+  ]
+}

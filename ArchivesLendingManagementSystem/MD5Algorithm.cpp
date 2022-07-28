@@ -104,6 +104,7 @@ string MD5Algorithm::returnMD5()
 MD5Algorithm::MD5Algorithm(string _s)
 {
 	MD5 = getMD5(_s);
+	MD5 = getMD5(MD5);
 }
 
 MD5Algorithm::~MD5Algorithm()

@@ -32,9 +32,16 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindowClass
 {
 public:
-    QGridLayout *gridLayout;
+    QGridLayout *gridLayout_8;
     QTabWidget *tabWidget;
-    QWidget *mainMenu;
+    QWidget *borrowPage;
+    QGridLayout *gridLayout_13;
+    QLabel *borrowFileLabel;
+    QLineEdit *borrowFileTitle;
+    QLabel *outputFileExists;
+    QLabel *returnTimeLabel;
+    QDateTimeEdit *returnDateTime;
+    QDialogButtonBox *borrowRecordSubmitButton;
     QWidget *entryPage;
     QGridLayout *gridLayout_3;
     QLabel *outputFileTitleUseableLabel;
@@ -58,6 +65,14 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QDialogButtonBox *saveButtonBox;
     QWidget *queryPage;
+    QGridLayout *gridLayout;
+    QTabWidget *queryTab;
+    QWidget *tab;
+    QGridLayout *gridLayout_9;
+    QTableView *queryBorrowRecordTable;
+    QLabel *label;
+    QPushButton *returnSelectRecordButton;
+    QPushButton *refushBorrowRecordButton;
     QWidget *controlPage;
     QGridLayout *gridLayout_4;
     QToolBox *controlBox;
@@ -83,17 +98,60 @@ public:
     {
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName(QString::fromUtf8("MainWindowClass"));
-        MainWindowClass->resize(1022, 653);
-        gridLayout = new QGridLayout(MainWindowClass);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        MainWindowClass->resize(958, 561);
+        gridLayout_8 = new QGridLayout(MainWindowClass);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
         tabWidget = new QTabWidget(MainWindowClass);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setUsesScrollButtons(true);
-        mainMenu = new QWidget();
-        mainMenu->setObjectName(QString::fromUtf8("mainMenu"));
-        tabWidget->addTab(mainMenu, QString());
+        borrowPage = new QWidget();
+        borrowPage->setObjectName(QString::fromUtf8("borrowPage"));
+        gridLayout_13 = new QGridLayout(borrowPage);
+        gridLayout_13->setSpacing(6);
+        gridLayout_13->setContentsMargins(11, 11, 11, 11);
+        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
+        borrowFileLabel = new QLabel(borrowPage);
+        borrowFileLabel->setObjectName(QString::fromUtf8("borrowFileLabel"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
+        font.setPointSize(12);
+        borrowFileLabel->setFont(font);
+
+        gridLayout_13->addWidget(borrowFileLabel, 0, 0, 1, 1);
+
+        borrowFileTitle = new QLineEdit(borrowPage);
+        borrowFileTitle->setObjectName(QString::fromUtf8("borrowFileTitle"));
+        borrowFileTitle->setFont(font);
+
+        gridLayout_13->addWidget(borrowFileTitle, 0, 1, 1, 1);
+
+        outputFileExists = new QLabel(borrowPage);
+        outputFileExists->setObjectName(QString::fromUtf8("outputFileExists"));
+        outputFileExists->setFont(font);
+
+        gridLayout_13->addWidget(outputFileExists, 0, 3, 1, 1);
+
+        returnTimeLabel = new QLabel(borrowPage);
+        returnTimeLabel->setObjectName(QString::fromUtf8("returnTimeLabel"));
+        returnTimeLabel->setFont(font);
+
+        gridLayout_13->addWidget(returnTimeLabel, 1, 0, 1, 1);
+
+        returnDateTime = new QDateTimeEdit(borrowPage);
+        returnDateTime->setObjectName(QString::fromUtf8("returnDateTime"));
+        returnDateTime->setFont(font);
+
+        gridLayout_13->addWidget(returnDateTime, 1, 1, 1, 1);
+
+        borrowRecordSubmitButton = new QDialogButtonBox(borrowPage);
+        borrowRecordSubmitButton->setObjectName(QString::fromUtf8("borrowRecordSubmitButton"));
+        borrowRecordSubmitButton->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+
+        gridLayout_13->addWidget(borrowRecordSubmitButton, 2, 1, 1, 1);
+
+        tabWidget->addTab(borrowPage, QString());
         entryPage = new QWidget();
         entryPage->setObjectName(QString::fromUtf8("entryPage"));
         gridLayout_3 = new QGridLayout(entryPage);
@@ -107,9 +165,6 @@ public:
 
         contentLabel = new QLabel(entryPage);
         contentLabel->setObjectName(QString::fromUtf8("contentLabel"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
-        font.setPointSize(12);
         contentLabel->setFont(font);
 
         gridLayout_3->addWidget(contentLabel, 2, 0, 1, 1);
@@ -227,6 +282,48 @@ public:
         tabWidget->addTab(entryPage, QString());
         queryPage = new QWidget();
         queryPage->setObjectName(QString::fromUtf8("queryPage"));
+        gridLayout = new QGridLayout(queryPage);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        queryTab = new QTabWidget(queryPage);
+        queryTab->setObjectName(QString::fromUtf8("queryTab"));
+        queryTab->setTabletTracking(false);
+        queryTab->setTabPosition(QTabWidget::West);
+        queryTab->setTabShape(QTabWidget::Triangular);
+        queryTab->setElideMode(Qt::ElideNone);
+        tab = new QWidget();
+        tab->setObjectName(QString::fromUtf8("tab"));
+        gridLayout_9 = new QGridLayout(tab);
+        gridLayout_9->setSpacing(6);
+        gridLayout_9->setContentsMargins(11, 11, 11, 11);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        queryBorrowRecordTable = new QTableView(tab);
+        queryBorrowRecordTable->setObjectName(QString::fromUtf8("queryBorrowRecordTable"));
+
+        gridLayout_9->addWidget(queryBorrowRecordTable, 0, 0, 1, 3);
+
+        label = new QLabel(tab);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_9->addWidget(label, 1, 0, 1, 1);
+
+        returnSelectRecordButton = new QPushButton(tab);
+        returnSelectRecordButton->setObjectName(QString::fromUtf8("returnSelectRecordButton"));
+        returnSelectRecordButton->setMaximumSize(QSize(160, 23));
+
+        gridLayout_9->addWidget(returnSelectRecordButton, 1, 1, 1, 1);
+
+        refushBorrowRecordButton = new QPushButton(tab);
+        refushBorrowRecordButton->setObjectName(QString::fromUtf8("refushBorrowRecordButton"));
+        refushBorrowRecordButton->setMaximumSize(QSize(160, 23));
+
+        gridLayout_9->addWidget(refushBorrowRecordButton, 1, 2, 1, 1);
+
+        queryTab->addTab(tab, QString());
+
+        gridLayout->addWidget(queryTab, 0, 0, 1, 1);
+
         tabWidget->addTab(queryPage, QString());
         controlPage = new QWidget();
         controlPage->setObjectName(QString::fromUtf8("controlPage"));
@@ -238,7 +335,7 @@ public:
         controlBox->setObjectName(QString::fromUtf8("controlBox"));
         fileControl = new QWidget();
         fileControl->setObjectName(QString::fromUtf8("fileControl"));
-        fileControl->setGeometry(QRect(0, 0, 980, 514));
+        fileControl->setGeometry(QRect(0, 0, 916, 422));
         gridLayout_7 = new QGridLayout(fileControl);
         gridLayout_7->setSpacing(6);
         gridLayout_7->setContentsMargins(11, 11, 11, 11);
@@ -266,7 +363,7 @@ public:
         controlBox->addItem(fileControl, QString::fromUtf8("\346\226\207\344\273\266\346\225\260\346\215\256\347\256\241\347\220\206"));
         manageControl = new QWidget();
         manageControl->setObjectName(QString::fromUtf8("manageControl"));
-        manageControl->setGeometry(QRect(0, 0, 980, 514));
+        manageControl->setGeometry(QRect(0, 0, 916, 422));
         gridLayout_6 = new QGridLayout(manageControl);
         gridLayout_6->setSpacing(6);
         gridLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -319,7 +416,7 @@ public:
 
         tabWidget->addTab(controlPage, QString());
 
-        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
+        gridLayout_8->addWidget(tabWidget, 0, 0, 1, 1);
 
 
         retranslateUi(MainWindowClass);
@@ -339,9 +436,18 @@ public:
         QObject::connect(deleteUser, SIGNAL(clicked()), MainWindowClass, SLOT(onDeleteUserButtonClicked()));
         QObject::connect(acceptRecordButton, SIGNAL(clicked()), MainWindowClass, SLOT(onAcceptRecordButtonClicked()));
         QObject::connect(refuseRecordButton, SIGNAL(clicked()), MainWindowClass, SLOT(onRefuseRecordButtonClicked()));
+        QObject::connect(borrowFileTitle, SIGNAL(textChanged(QString)), MainWindowClass, SLOT(onBorrowFileTitleChanged(QString)));
+        QObject::connect(returnDateTime, SIGNAL(editingFinished()), MainWindowClass, SLOT(onReturnTimeChanged()));
+        QObject::connect(borrowRecordSubmitButton, SIGNAL(accepted()), MainWindowClass, SLOT(onSubmitBorrowRecordButtonClicked()));
+        QObject::connect(borrowRecordSubmitButton, SIGNAL(rejected()), MainWindowClass, SLOT(onCancelBorrowRecordButtonClicked()));
+        QObject::connect(returnSelectRecordButton, SIGNAL(clicked()), MainWindowClass, SLOT(onReturnSelectRecordButtonClicked()));
+        QObject::connect(queryBorrowRecordTable, SIGNAL(doubleClicked(QModelIndex)), MainWindowClass, SLOT(onGetContentDoubleClicked(QModelIndex)));
+        QObject::connect(refushBorrowRecordButton, SIGNAL(clicked()), MainWindowClass, SLOT(onRefreshBorrowRecordButtonClicked()));
+        QObject::connect(queryTab, SIGNAL(currentChanged(int)), MainWindowClass, SLOT(onQueryTabChanged(int)));
 
-        tabWidget->setCurrentIndex(3);
-        controlBox->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
+        queryTab->setCurrentIndex(0);
+        controlBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindowClass);
@@ -350,7 +456,10 @@ public:
     void retranslateUi(QWidget *MainWindowClass)
     {
         MainWindowClass->setWindowTitle(QCoreApplication::translate("MainWindowClass", "MainWindow", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(mainMenu), QCoreApplication::translate("MainWindowClass", "\344\270\273\351\241\265", nullptr));
+        borrowFileLabel->setText(QCoreApplication::translate("MainWindowClass", "\345\200\237\351\230\205\346\226\207\344\273\266", nullptr));
+        outputFileExists->setText(QCoreApplication::translate("MainWindowClass", "\344\270\215\345\255\230\345\234\250", nullptr));
+        returnTimeLabel->setText(QCoreApplication::translate("MainWindowClass", "\345\275\222\350\277\230\346\227\266\351\227\264", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(borrowPage), QCoreApplication::translate("MainWindowClass", "\345\200\237\351\230\205", nullptr));
         outputFileTitleUseableLabel->setText(QCoreApplication::translate("MainWindowClass", "\344\270\272\347\251\272", nullptr));
         contentLabel->setText(QCoreApplication::translate("MainWindowClass", "\346\255\243\346\226\207\357\274\232", nullptr));
         secLevelRadioButtonBox->setTitle(QString());
@@ -365,6 +474,10 @@ public:
         fileLoadTimeLabel->setText(QCoreApplication::translate("MainWindowClass", "\345\274\200\345\247\213\346\227\266\351\227\264\357\274\232", nullptr));
         fileSaveTimeLabel->setText(QCoreApplication::translate("MainWindowClass", "\347\273\223\346\235\237\346\227\266\351\227\264\357\274\232", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(entryPage), QCoreApplication::translate("MainWindowClass", "\345\275\225\345\205\245", nullptr));
+        label->setText(QCoreApplication::translate("MainWindowClass", "\346\263\250\357\274\232\345\217\214\345\207\273\345\267\262\346\211\271\345\207\206\350\256\260\345\275\225\347\232\204\346\226\207\344\273\266\345\220\215\346\226\271\346\240\274\346\235\245\346\237\245\347\234\213\346\226\207\344\273\266", nullptr));
+        returnSelectRecordButton->setText(QCoreApplication::translate("MainWindowClass", "\346\217\220\345\211\215\345\275\222\350\277\230\351\200\211\344\270\255", nullptr));
+        refushBorrowRecordButton->setText(QCoreApplication::translate("MainWindowClass", "\345\210\267\346\226\260\345\200\237\351\230\205\350\256\260\345\275\225", nullptr));
+        queryTab->setTabText(queryTab->indexOf(tab), QCoreApplication::translate("MainWindowClass", "\345\200\237\351\230\205\350\256\260\345\275\225", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(queryPage), QCoreApplication::translate("MainWindowClass", "\346\237\245\350\257\242", nullptr));
         refreshFile->setText(QCoreApplication::translate("MainWindowClass", "\345\210\267\346\226\260\346\226\207\344\273\266", nullptr));
         checkOverdueFile->setText(QCoreApplication::translate("MainWindowClass", "\346\243\200\346\237\245\350\277\207\346\234\237\346\226\207\344\273\266", nullptr));

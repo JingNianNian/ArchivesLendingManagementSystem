@@ -6,26 +6,94 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>653</height>
+    <width>958</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_8">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <property name="usesScrollButtons">
       <bool>true</bool>
      </property>
-     <widget class="QWidget" name="mainMenu">
+     <widget class="QWidget" name="borrowPage">
       <attribute name="title">
-       <string>主页</string>
+       <string>借阅</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout_13">
+       <item row="0" column="0">
+        <widget class="QLabel" name="borrowFileLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>借阅文件</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="borrowFileTitle">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="outputFileExists">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>不存在</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="returnTimeLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>归还时间</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDateTimeEdit" name="returnDateTime">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QDialogButtonBox" name="borrowRecordSubmitButton">
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="entryPage">
       <attribute name="title">
@@ -313,6 +381,70 @@
       <attribute name="title">
        <string>查询</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QTabWidget" name="queryTab">
+         <property name="tabletTracking">
+          <bool>false</bool>
+         </property>
+         <property name="tabPosition">
+          <enum>QTabWidget::West</enum>
+         </property>
+         <property name="tabShape">
+          <enum>QTabWidget::Triangular</enum>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="elideMode">
+          <enum>Qt::ElideNone</enum>
+         </property>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>借阅记录</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="0" colspan="3">
+            <widget class="QTableView" name="queryBorrowRecordTable"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>注：双击已批准记录的文件名方格来查看文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="returnSelectRecordButton">
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>提前归还选中</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="refushBorrowRecordButton">
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>刷新借阅记录</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="controlPage">
       <attribute name="title">
@@ -322,15 +454,15 @@
        <item row="0" column="1">
         <widget class="QToolBox" name="controlBox">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="fileControl">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>980</width>
-            <height>514</height>
+            <width>916</width>
+            <height>422</height>
            </rect>
           </property>
           <attribute name="label">
@@ -368,8 +500,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>980</width>
-            <height>514</height>
+            <width>916</width>
+            <height>422</height>
            </rect>
           </property>
           <attribute name="label">
@@ -444,11 +576,11 @@
    <slot>onFileContentChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>918</x>
-     <y>285</y>
+     <x>911</x>
+     <y>221</y>
     </hint>
     <hint type="destinationlabel">
-     <x>940</x>
+     <x>933</x>
      <y>263</y>
     </hint>
    </hints>
@@ -464,7 +596,7 @@
      <y>44</y>
     </hint>
     <hint type="destinationlabel">
-     <x>940</x>
+     <x>933</x>
      <y>57</y>
     </hint>
    </hints>
@@ -480,7 +612,7 @@
      <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>940</x>
+     <x>933</x>
      <y>107</y>
     </hint>
    </hints>
@@ -524,12 +656,12 @@
    <slot>onSaveButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>844</x>
-     <y>620</y>
+     <x>822</x>
+     <y>530</y>
     </hint>
     <hint type="destinationlabel">
      <x>860</x>
-     <y>649</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -540,12 +672,12 @@
    <slot>onCancelButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>801</x>
-     <y>620</y>
+     <x>779</x>
+     <y>530</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
-     <y>648</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -573,11 +705,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>49</x>
-     <y>559</y>
+     <y>467</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
-     <y>559</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -588,12 +720,12 @@
    <slot>onCheckOverdueFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
-     <y>561</y>
+     <x>419</x>
+     <y>469</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
-     <y>492</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -604,12 +736,12 @@
    <slot>onDeleteSelectedFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>555</y>
+     <x>739</x>
+     <y>463</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
-     <y>428</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -621,11 +753,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>164</x>
-     <y>587</y>
+     <y>495</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
-     <y>544</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -636,12 +768,12 @@
    <slot>onDownLevelButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>465</x>
-     <y>584</y>
+     <x>443</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
-     <y>476</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -652,8 +784,8 @@
    <slot>onDeleteUserButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>834</x>
-     <y>581</y>
+     <x>792</x>
+     <y>489</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -669,11 +801,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>172</x>
-     <y>614</y>
+     <y>524</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
-     <y>523</y>
+     <y>413</y>
     </hint>
    </hints>
   </connection>
@@ -684,12 +816,140 @@
    <slot>onRefuseRecordButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>628</x>
-     <y>618</y>
+     <x>617</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
-     <y>472</y>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>borrowFileTitle</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onBorrowFileTitleChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>returnDateTime</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onReturnTimeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>borrowRecordSubmitButton</sender>
+   <signal>accepted()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onSubmitBorrowRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>767</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>933</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>borrowRecordSubmitButton</sender>
+   <signal>rejected()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onCancelBorrowRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>827</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>933</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>returnSelectRecordButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onReturnSelectRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>660</x>
+     <y>515</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>558</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>queryBorrowRecordTable</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onGetContentDoubleClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>214</x>
+     <y>170</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>957</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refushBorrowRecordButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onRefreshBorrowRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>872</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>931</x>
+     <y>509</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>queryTab</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onQueryTabChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>197</y>
     </hint>
    </hints>
   </connection>
@@ -711,5 +971,13 @@
   <slot>onDeleteUserButtonClicked()</slot>
   <slot>onAcceptRecordButtonClicked()</slot>
   <slot>onRefuseRecordButtonClicked()</slot>
+  <slot>onBorrowFileTitleChanged(QString)</slot>
+  <slot>onReturnTimeChanged()</slot>
+  <slot>onSubmitBorrowRecordButtonClicked()</slot>
+  <slot>onCancelBorrowRecordButtonClicked()</slot>
+  <slot>onRefreshBorrowRecordButtonClicked()</slot>
+  <slot>onGetContentDoubleClicked(QModelIndex)</slot>
+  <slot>onReturnSelectRecordButtonClicked()</slot>
+  <slot>onQueryTabChanged(int)</slot>
  </slots>
 </ui>

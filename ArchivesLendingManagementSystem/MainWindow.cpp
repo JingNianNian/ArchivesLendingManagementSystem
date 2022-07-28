@@ -2,6 +2,8 @@
 #include "CurMessage.h"
 #include "qmessagebox.h"
 #include "DataController.h"
+#include "MyUtility.h"
+#include "ReturnTextWidget.h"
 MainWindow::MainWindow(QWidget *parent)
 	: QWidget(parent)
 {
@@ -9,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 	this->setAttribute(Qt::WA_DeleteOnClose);
 	if(curMessage::curUser.getUserLevel() > 1) ui.tabWidget->setTabEnabled(3, false);
 	clearContent();
+	clearBorrowRecord();
 }
 
 MainWindow::~MainWindow()
@@ -156,7 +159,7 @@ void MainWindow::onControlPageChanged(int page)
 	if (tableModel != NULL) delete tableModel;
 
 	if (page == 2) {
-		 tableModel = curMessage::db.getTableModel("borrowRecordTable");
+		tableModel = curMessage::db.getTableModel("borrowRecordTable");
 		ui.borrowRecordTable->setModel(tableModel);
 		ui.borrowRecordTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 		for (int i = 0; i < tableModel->rowCount(); i++) {
@@ -347,9 +350,183 @@ void MainWindow::onDownLevelButtonClicked()
 	onControlPageChanged(1);
 }
 
+void MainWindow::onBorrowFileTitleChanged(QString _qS)
+{
+	if (_qS == "") {
+		ui.outputFileExists->setText("不存在");
+		borrowFileTitleIsOk = false;
+		return;
+	}
+
+	if (curMessage::db.checkFile(
+		file(
+			_qS,
+			QString(""),
+			myTime(),
+			myTime(),
+			QString(""),
+			0, 0, 0
+		)
+	)) {
+		ui.outputFileExists->setText("存在");
+		borrowFileTitleIsOk = true;
+	}
+	else {
+		ui.outputFileExists->setText("不存在");
+		borrowFileTitleIsOk = false;
+	}
+}
+
+void MainWindow::onReturnTimeChanged()
+{
+	auto now = QDateTime::currentDateTime().addDays(1);
+	if (ui.returnDateTime->dateTime() < now) {
+		ui.returnDateTime->setDateTime(now);
+	}
+}
+
+void MainWindow::onSubmitBorrowRecordButtonClicked()
+{
+	if (!borrowFileTitleIsOk) {
+		QMessageBox::about(NULL, "Message", "文件不存在！");
+		return;
+	}
+	auto guid = myUtility::getQGUID();
+	auto userName = curMessage::curUser.getUserName();
+	auto fileTitle = ui.borrowFileTitle->text();
+	auto nowTime = myTime(QDateTime::currentDateTime().toTime_t());
+	auto returnTime = myTime(ui.returnDateTime->dateTime().toTime_t());
+	auto isDeal = curMessage::curUser.getUserLevel() <= 1;
+	auto _bR = borrowRecord(guid, userName, fileTitle, nowTime, returnTime, isDeal, isDeal);
+	auto allUserRecord = curMessage::db.getRecordByUser(curMessage::curUser.getUserName());
+	for (auto bR : allUserRecord) {
+		if (bR.getFileTitle() == fileTitle && bR.getIsDealWith() && bR.getDealResult() && !bR.getIsReturn()) {
+			QMessageBox::about(NULL, "Message", "您已经借出此文件！");
+			return;
+		}
+	}
+	if (curMessage::db.addRecord(_bR)) {
+		QMessageBox::about(NULL, "Message", "提交成功！");
+		clearBorrowRecord();
+	}
+	else {
+		QMessageBox::about(NULL, "Message", "提交失败，请联系管理员！");
+	}
+}
+
+void MainWindow::clearBorrowRecord() {
+	auto nowTime = QDateTime::currentDateTime();
+	onReturnTimeChanged();
+	ui.outputFileExists->setText("不存在");
+	ui.borrowFileTitle->setText("");
+}
+
+void MainWindow::onCancelBorrowRecordButtonClicked()
+{
+	clearBorrowRecord();
+}
+
+void MainWindow::onRefreshBorrowRecordButtonClicked()
+{
+	onQueryTabChanged(0);
+}
+
+void MainWindow::onGetContentDoubleClicked(QModelIndex idx)
+{
+	auto GuidIdx = ui.queryBorrowRecordTable->model()->index(idx.row(), 0);
+	auto Guid = ui.queryBorrowRecordTable->model()->data(GuidIdx).toString();
+	auto _bR = curMessage::db.getRecordByGuid(Guid);
+	if (!_bR.getIsDealWith()) {
+		QMessageBox::about(NULL, "Message", "记录未处理！");
+		return;
+	}
+
+	if (!_bR.getDealResult()) {
+		QMessageBox::about(NULL, "Message", "记录被拒绝！");
+		return;
+	}
+	else {
+		if (_bR.getIsReturn()) {
+			QMessageBox::about(NULL, "Message", "记录已归还！");
+		}
+		else {
+			auto _f = curMessage::db.getFileByTitle(_bR.getFileTitle());
+			ReturnTextWidget* mw = new ReturnTextWidget();
+			mw->setGeometry(this->geometry());
+			mw->show();
+			mw->ui.returnText->setPlainText(_f.getFileContent());
+		}
+	}
+}
+
+void MainWindow::onReturnSelectRecordButtonClicked()
+{
+	vector<QString> returnRecord;
+	for (auto i : ui.queryBorrowRecordTable->selectionModel()->selectedRows()) {
+		auto guid = ui.queryBorrowRecordTable->model()->data(i).toString();
+		returnRecord.push_back(guid);
+		qDebug() << guid;
+	}
+	dataControl::returnRecord(returnRecord);
+	onQueryTabChanged(0);
+}
+
+QSqlTableModel* queryModel = NULL;
+
+void MainWindow::onQueryTabChanged(int tab)
+{
+	
+	dataControl::checkRecordOverdue();
+	if (tab == 0) {
+		if (queryModel != NULL) delete queryModel;
+		queryModel = new QSqlTableModel(NULL, curMessage::db.getDbObj());
+		queryModel->setTable("borrowRecordTable");
+		queryModel->setHeaderData(0, Qt::Horizontal, QVariant("Guid"));
+		queryModel->setHeaderData(1, Qt::Horizontal, QVariant("借阅者"));
+		queryModel->setHeaderData(2, Qt::Horizontal, QVariant("文件名"));
+		queryModel->setHeaderData(3, Qt::Horizontal, QVariant("借阅时间"));
+		queryModel->setHeaderData(4, Qt::Horizontal, QVariant("归还时间"));
+		queryModel->setHeaderData(5, Qt::Horizontal, QVariant("是否处理"));
+		queryModel->setHeaderData(6, Qt::Horizontal, QVariant("处理结果"));
+		queryModel->setHeaderData(7, Qt::Horizontal, QVariant("是否归还"));
+		queryModel->setEditStrategy(QSqlTableModel::EditStrategy::OnManualSubmit);
+		queryModel->setFilter(QString("userName = '%1'").arg(curMessage::curUser.getUserName()));
+		queryModel->select();
+		ui.queryBorrowRecordTable->setModel(queryModel);
+		ui.queryBorrowRecordTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		tableModel = curMessage::db.getTableModel("borrowRecordTable");
+		ui.borrowRecordTable->setModel(tableModel);
+		ui.borrowRecordTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		for (int i = 0; i < queryModel->rowCount(); i++) {
+			for (auto j : { 3, 4 }) {
+				auto idx = queryModel->index(i, j);
+				int ans = queryModel->data(idx).toInt();
+				myTime tm(ans);
+				queryModel->setData(idx, QVariant(tm.getDateAndTime()));
+			}
+			for (auto j : { 5,6,7 }) {
+				auto idx = queryModel->index(i, j);
+				bool ans = queryModel->data(idx).isNull();
+				if (!ans) {
+					ans = queryModel->data(idx).toBool();
+					if (ans) queryModel->setData(idx, QVariant("是"));
+					else queryModel->setData(idx, QVariant("否"));
+				}
+				//tableModel->setData(idx, )
+			}
+		}
+	}
+	else {
+		//
+	}
+}
+
 void MainWindow::onTabWidgetChanged(int cur)
 {
 	if (cur == 3) {
 		onControlPageChanged(ui.controlBox->currentIndex());
+	}
+	else if (cur == 2) {
+		onRefreshBorrowRecordButtonClicked();
 	}
 }

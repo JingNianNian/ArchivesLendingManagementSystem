@@ -95,7 +95,6 @@ bool borrowRecord::getIsReturn()
 	return isReturn;
 }
 
-
 borrowRecord::~borrowRecord()
 {
 
