@@ -1,5 +1,4 @@
 #pragma once
-
 #include "DBHelper.h"
 
 dbHelper::dbHelper()
@@ -83,6 +82,42 @@ bool dbHelper::checkLogin(QString userName, QString password)
 		qDebug() << e.what();
 	}
 
+}
+
+QSqlTableModel* dbHelper::getTableModel(QString tableName)
+{
+	auto ret = new QSqlTableModel(NULL, db);
+	ret->setTable(tableName);
+	if (tableName == "borrowRecordTable") {
+		ret->setHeaderData(0, Qt::Horizontal, QVariant("Guid"));
+		ret->setHeaderData(1, Qt::Horizontal, QVariant("借阅者"));
+		ret->setHeaderData(2, Qt::Horizontal, QVariant("文件名"));
+		ret->setHeaderData(3, Qt::Horizontal, QVariant("借阅时间"));
+		ret->setHeaderData(4, Qt::Horizontal, QVariant("归还时间"));
+		ret->setHeaderData(5, Qt::Horizontal, QVariant("是否处理"));
+		ret->setHeaderData(6, Qt::Horizontal, QVariant("处理结果"));
+		ret->setHeaderData(7, Qt::Horizontal, QVariant("是否归还"));
+		
+	}
+	else if(tableName == "userTable") {
+		ret->setHeaderData(0, Qt::Horizontal, QVariant("用户名"));
+		ret->setHeaderData(1, Qt::Horizontal, QVariant("认证代码"));
+		ret->setHeaderData(2, Qt::Horizontal, QVariant("电话"));
+		ret->setHeaderData(3, Qt::Horizontal, QVariant("权限等级"));
+	}
+	else if(tableName == "fileTable") {
+		ret->setHeaderData(0, Qt::Horizontal, QVariant("文件名"));
+		ret->setHeaderData(1, Qt::Horizontal, QVariant("所有人"));
+		ret->setHeaderData(2, Qt::Horizontal, QVariant("上传时间"));
+		ret->setHeaderData(3, Qt::Horizontal, QVariant("保存时间"));
+		ret->setHeaderData(4, Qt::Horizontal, QVariant("文件内容"));
+		ret->setHeaderData(5, Qt::Horizontal, QVariant("文件类型"));
+		ret->setHeaderData(6, Qt::Horizontal, QVariant("保密等级"));
+		ret->setHeaderData(7, Qt::Horizontal, QVariant("是否借出"));
+	}
+	ret->setEditStrategy(QSqlTableModel::EditStrategy::OnManualSubmit);
+	ret->select();
+	return ret;
 }
 
 user dbHelper::getUser(QString userName)
@@ -286,10 +321,12 @@ bool dbHelper::deleteUser(user _u)
 		QString qs = QString("delete userTable where userName = '%1'").arg(_u.getUserName());
 		if (qry.exec(qs)) {
 			//log
+			myLog::writeInfoLog(QString("User %1 is successfully deleted From [dbHelper::deleteUser]").arg(_u.getUserName()));
 			return true;
 		}
 		else {
 			//log
+			myLog::writeInfoLog(QString("User %1 is unsuccessfully deleted From [dbHelper::deleteUser]").arg(_u.getUserName()));
 			return false;
 		}
 	}
@@ -817,16 +854,6 @@ vector<borrowRecord> dbHelper::getRecordByUser(user _u)
 	
 }
 
-vector<borrowRecord> dbHelper::getUnDealRecord()
-{
-	return vector<borrowRecord>();
-}
-
-vector<borrowRecord> dbHelper::getDealRecord()
-{
-	return vector<borrowRecord>();
-}
-
 vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 {
 	try
@@ -864,16 +891,11 @@ vector<borrowRecord> dbHelper::getRocordByFileTitle(file _f)
 	}
 }
 
-vector<borrowRecord> dbHelper::getOutOfLimitTimeRecord(myTime _t)
-{
-	return vector<borrowRecord>();
-}
-
 bool dbHelper::checkRecord(borrowRecord _bR)
 {
 
 	try
-	{/*
+	{
 		QSqlQuery qry(db);
 		QString qs = QString("select * from  borrowRecordTable where guid = '%1'").arg(_bR.getGuid());
 		if (qry.exec(qs)) {
@@ -889,7 +911,7 @@ bool dbHelper::checkRecord(borrowRecord _bR)
 		else {
 			//log
 			return false;
-		}*/
+		}
 		return false;
 	}
 	catch (const std::exception& e)
@@ -899,21 +921,22 @@ bool dbHelper::checkRecord(borrowRecord _bR)
 	}
 	
 }
-/*
+
 bool dbHelper::addRecord(borrowRecord _bR)
 {
 	try
 	{
 		QSqlQuery qry(db);
 		QString qs =
-			QString("insert into borrowRecordTable values('%1', '%2', '%3', '%4', '%5', %6, %7)").
+			QString("insert into borrowRecordTable values('%1', '%2', '%3', '%4', '%5', %6, %7, %8)").
 			arg(_bR.getGuid()).
 			arg(_bR.getUserName()).
 			arg(_bR.getFileTitle()).
 			arg(_bR.getBorrowTime().getTimeStamp()).
 			arg(_bR.getReturnTime().getTimeStamp()).
 			arg(_bR.getIsDealWith()).
-			arg(_bR.getDealResult());
+			arg("NULL").
+			arg("NULL");
 		
 		if (qry.exec(qs)) {
 			return true;
@@ -935,7 +958,7 @@ bool dbHelper::setBorrowTime(borrowRecord _bR)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update borrowRecordTable set borrowTime = '%1' where guid = '%2'").
-			arg(_bR.getBorrowTime()).
+			arg(_bR.getBorrowTime().getTimeStamp()).
 			arg(_bR.getGuid());
 		if (qry.exec(qs)) {
 			//log
@@ -959,7 +982,7 @@ bool dbHelper::setReturnTime(borrowRecord _bR)
 	{
 		QSqlQuery qry(db);
 		QString qs = QString("update borrowRecordTable set returnTime = '%1' where guid = '%2'").
-			arg(_bR.getBorrowTime()).
+			arg(_bR.getBorrowTime().getTimeStamp()).
 			arg(_bR.getGuid());
 		if (qry.exec(qs)) {
 			//log
@@ -982,7 +1005,7 @@ bool dbHelper::setIsDealWith(borrowRecord _bR)
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = QString("update borrowRecordTable set isDealWith = '%1' where guid = '%2'").
+		QString qs = QString("update borrowRecordTable set isDealWith = %1 where guid = '%2'").
 			arg(_bR.getIsDealWith()).
 			arg(_bR.getGuid());
 		if (qry.exec(qs)) {
@@ -1006,8 +1029,32 @@ bool dbHelper::setDealResult(borrowRecord _bR)
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = QString("update borrowRecordTable set dealResult = '%1' where guid = '%2'").
+		QString qs = QString("update borrowRecordTable set dealResult = %1 where guid = '%2'").
 			arg(_bR.getDealResult()).
+			arg(_bR.getGuid());
+		if (qry.exec(qs)) {
+			//log
+			return true;
+		}
+		else {
+			//log
+			return false;
+		}
+	}
+	catch (const std::exception& e)
+	{
+		//log
+		qDebug() << e.what();
+	}
+}
+
+bool dbHelper::setIsReturn(borrowRecord _bR)
+{
+	try
+	{
+		QSqlQuery qry(db);
+		QString qs = QString("update borrowRecordTable set isReturn = %1 where guid = '%2'").
+			arg(_bR.getIsReturn()).
 			arg(_bR.getGuid());
 		if (qry.exec(qs)) {
 			//log
@@ -1030,7 +1077,7 @@ bool dbHelper::deleteRecord(borrowRecord _bR)
 	try
 	{
 		QSqlQuery qry(db);
-		QString qs = QString("delete borrowRecordTable  where guid = '%1'").arg(_bR.getGuid());
+		QString qs = QString("delete borrowRecordTable where guid = '%1'").arg(_bR.getGuid());
 		if (qry.exec(qs)) {
 			//log
 			return true;
@@ -1050,9 +1097,4 @@ bool dbHelper::deleteRecord(borrowRecord _bR)
 dbHelper::~dbHelper()
 {
 
-}
-*/
-
-dbHelper::~dbHelper()
-{
 }

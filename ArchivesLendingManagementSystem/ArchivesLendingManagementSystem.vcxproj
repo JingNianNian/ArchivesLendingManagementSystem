@@ -87,8 +87,10 @@
   <ItemGroup>
     <ClCompile Include="borrowRecord.cpp" />
     <ClCompile Include="CurMessage.cpp" />
+    <ClCompile Include="DataController.cpp" />
     <ClCompile Include="DBHelper.cpp" />
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="myLog.cpp" />
     <ClCompile Include="LoginWindow.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MD5Algorithm.cpp" />
@@ -114,12 +116,12 @@
     <ClInclude Include="DataController.h" />
     <ClInclude Include="DBHelper.h" />
     <ClInclude Include="File.h" />
+    <ClInclude Include="myLog.h" />
     <QtMoc Include="SignUpWindow.h" />
     <QtMoc Include="MainWindow.h" />
     <ClInclude Include="MD5Algorithm.h" />
     <ClInclude Include="MyTime.h" />
     <ClInclude Include="MyUtility.h" />
-    <ClInclude Include="Paths.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="CurMessage.h" />
   </ItemGroup>

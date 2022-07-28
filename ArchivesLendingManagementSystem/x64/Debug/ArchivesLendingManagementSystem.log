@@ -1,5 +1,4 @@
-﻿  CurMessage.cpp
+﻿  DataController.cpp
   LoginWindow.cpp
-  main.cpp
-  moc_LoginWindow.cpp
+  borrowRecord.cpp
   ArchivesLendingManagementSystem.vcxproj -> C:\Users\User\Desktop\ArchivesLendingManagementSystem\x64\Debug\ArchivesLendingManagementSystem.exe

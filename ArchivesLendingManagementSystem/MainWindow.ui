@@ -1,22 +1,715 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MainWindowClass</class>
- <widget class="QWidget" name="MainWindowClass" >
-  <property name="objectName" >
-   <string notr="true">MainWindowClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="MainWindowClass">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>1022</width>
+    <height>653</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
-  </property>$centralwidget$
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="mainMenu">
+      <attribute name="title">
+       <string>主页</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="entryPage">
+      <attribute name="title">
+       <string>录入</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="9">
+        <widget class="QLabel" name="outputFileTitleUseableLabel">
+         <property name="text">
+          <string>为空</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="contentLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>正文：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="7">
+        <widget class="QLineEdit" name="fileTitle">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="8" colspan="2">
+        <widget class="QGroupBox" name="secLevelRadioButtonBox">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="2">
+           <widget class="QRadioButton" name="sec1">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>秘密</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="sec0">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>绝密</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QRadioButton" name="sec3">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>普通</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QRadioButton" name="sec2">
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>机密</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QDateTimeEdit" name="fileSaveTime">
+         <property name="minimumSize">
+          <size>
+           <width>176</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>176</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="dateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>2022</year>
+           <month>12</month>
+           <day>31</day>
+          </datetime>
+         </property>
+         <property name="displayFormat">
+          <string>yyyy/M/d hh:mm:ss</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>44</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" colspan="10">
+        <widget class="QTextEdit" name="fileContent">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="fileTitleLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>档案名称：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>44</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="7">
+        <widget class="QLabel" name="secLevelLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>保密等级：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QDateTimeEdit" name="fileLoadTime">
+         <property name="minimumSize">
+          <size>
+           <width>176</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>176</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="dateTime">
+          <datetime>
+           <hour>23</hour>
+           <minute>59</minute>
+           <second>59</second>
+           <year>2022</year>
+           <month>11</month>
+           <day>30</day>
+          </datetime>
+         </property>
+         <property name="displayFormat">
+          <string>yyyy/M/d hh:mm:ss</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="fileLoadTimeLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>开始时间：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="fileSaveTimeLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>结束时间：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="9">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>945</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="8">
+        <widget class="QDialogButtonBox" name="saveButtonBox">
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="queryPage">
+      <attribute name="title">
+       <string>查询</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="controlPage">
+      <attribute name="title">
+       <string>管理</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="1">
+        <widget class="QToolBox" name="controlBox">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="fileControl">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>980</width>
+            <height>514</height>
+           </rect>
+          </property>
+          <attribute name="label">
+           <string>文件数据管理</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="1" column="0">
+            <widget class="QPushButton" name="refreshFile">
+             <property name="text">
+              <string>刷新文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="checkOverdueFile">
+             <property name="text">
+              <string>检查过期文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="deleteSelectedFile">
+             <property name="text">
+              <string>删除选中文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="3">
+            <widget class="QTableView" name="fileTable"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="manageControl">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>980</width>
+            <height>514</height>
+           </rect>
+          </property>
+          <attribute name="label">
+           <string>用户权限管理</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="1" column="2">
+            <widget class="QPushButton" name="deleteUser">
+             <property name="text">
+              <string>删除用户</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="3">
+            <widget class="QTableView" name="userTable"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="upLevel">
+             <property name="text">
+              <string>提升权限</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="downLevel">
+             <property name="text">
+              <string>降低权限</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="borrowRecordControl">
+          <attribute name="label">
+           <string>借阅记录管理</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0" colspan="2">
+            <widget class="QTableView" name="borrowRecordTable"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="acceptRecordButton">
+             <property name="text">
+              <string>批准选中</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="refuseRecordButton">
+             <property name="text">
+              <string>拒绝选中</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
- <connections/>
-</UI>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>fileContent</sender>
+   <signal>textChanged()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onFileContentChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>918</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>940</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileTitle</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onFileTitleChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>940</x>
+     <y>57</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveTime</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onSaveTimeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>548</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>940</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileLoadTime</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onLoadTimeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>tabBarClicked(int)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onTabWidgetChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onSaveButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>844</x>
+     <y>620</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>649</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onCancelButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>620</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>715</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>controlBox</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onControlPageChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>51</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onRefreshFileButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>559</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>559</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkOverdueFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onCheckOverdueFileButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deleteSelectedFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onDeleteSelectedFileButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>781</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>upLevel</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onUpLevelButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>587</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>downLevel</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onDownLevelButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>584</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deleteUser</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onDeleteUserButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>834</x>
+     <y>581</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acceptRecordButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onAcceptRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>614</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>523</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refuseRecordButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindowClass</receiver>
+   <slot>onRefuseRecordButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>628</x>
+     <y>618</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>472</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onFileContentChanged()</slot>
+  <slot>onFileTitleChanged(QString)</slot>
+  <slot>onSaveTimeChanged()</slot>
+  <slot>onLoadTimeChanged()</slot>
+  <slot>onTabWidgetChanged(int)</slot>
+  <slot>onSaveButtonClicked()</slot>
+  <slot>onCancelButtonClicked()</slot>
+  <slot>onControlPageChanged(int)</slot>
+  <slot>onRefreshFileButtonClicked()</slot>
+  <slot>onCheckOverdueFileButtonClicked()</slot>
+  <slot>onDeleteSelectedFileButtonClicked()</slot>
+  <slot>onUpLevelButtonClicked()</slot>
+  <slot>onDownLevelButtonClicked()</slot>
+  <slot>onDeleteUserButtonClicked()</slot>
+  <slot>onAcceptRecordButtonClicked()</slot>
+  <slot>onRefuseRecordButtonClicked()</slot>
+ </slots>
+</ui>

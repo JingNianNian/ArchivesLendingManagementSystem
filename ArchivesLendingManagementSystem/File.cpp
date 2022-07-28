@@ -18,15 +18,27 @@ file::file(QString _fileTitle, QString _userName, myTime _loadTime, myTime _save
 
 void file::setFileTitle(QString _fileTitle)
 {
+	fileTitle = _fileTitle;
 }
 
 QString file::getFileTitle()
 {
-	return fileTitle;
+	QString ret = "";
+	for (auto i : fileTitle) {
+		if (i == (char)39) {
+			ret += (char)39;
+			ret += (char)39;
+		}
+		else {
+			ret += i;
+		}
+	}
+	return ret;
 }
 
 void file::setUserName(QString _userName)
 {
+	userName = _userName;
 }
 
 QString file::getUserName()
@@ -36,6 +48,7 @@ QString file::getUserName()
 
 void file::setLoadTime(myTime _loadTime)
 {
+	loadTime = _loadTime;
 }
 
 myTime file::getLoadTime()
@@ -45,6 +58,7 @@ myTime file::getLoadTime()
 
 void file::setSaveTime(myTime _saveTime)
 {
+	saveTime = _saveTime;
 }
 
 myTime file::getSaveTime()
@@ -54,15 +68,27 @@ myTime file::getSaveTime()
 
 void file::setFileContent(QString _fileContent)
 {
+	fileContent = _fileContent;
 }
 
 QString file::getFileContent()
 {
-	return fileContent;
+	QString ret = "";
+	for (auto i : fileContent) {
+		if (i == (char)39) {
+			ret += (char)39;
+			ret += (char)39;
+		}
+		else {
+			ret += i;
+		}
+	}
+	return ret;
 }
 
 void file::setFileType(bool _fileType)
 {
+	fileType = _fileType;
 }
 
 bool file::getFileType()
@@ -72,6 +98,7 @@ bool file::getFileType()
 
 void file::setFileSecrecy(int _fileSecrecy)
 {
+	fileSecrecy = _fileSecrecy;
 }
 
 int file::getFileSecrecy()
@@ -81,6 +108,7 @@ int file::getFileSecrecy()
 
 void file::setIsBorrowed(bool _isBorrowed)
 {
+	isBorrowed = _isBorrowed;
 }
 
 bool file::getIsBorrowed()

@@ -27,21 +27,19 @@ class Ui_LoginWindow
 public:
     QWidget *LoginWidget;
     QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer_7;
+    QSpacerItem *horizontalSpacer_6;
+    QLineEdit *userNameLineEdit;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *signInButton;
+    QSpacerItem *horizontalSpacer_5;
     QLabel *userNameLabel;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer_3;
+    QSpacerItem *verticalSpacer;
     QLineEdit *passwordLineEdit;
     QLabel *passwordLabel;
-    QSpacerItem *horizontalSpacer_5;
-    QSpacerItem *horizontalSpacer_6;
-    QSpacerItem *verticalSpacer_2;
-    QLineEdit *userNameLineEdit;
-    QPushButton *signInButton;
-    QSpacerItem *verticalSpacer;
-    QPushButton *forgetPasswordButton;
-    QSpacerItem *horizontalSpacer_3;
     QPushButton *signUpButton;
-    QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *horizontalSpacer_7;
-    QSpacerItem *verticalSpacer_3;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *LoginWindow)
@@ -55,46 +53,26 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        userNameLabel = new QLabel(LoginWidget);
-        userNameLabel->setObjectName(QString::fromUtf8("userNameLabel"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
-        font.setPointSize(12);
-        userNameLabel->setFont(font);
-        userNameLabel->setTextFormat(Qt::AutoText);
+        horizontalSpacer_7 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(userNameLabel, 1, 1, 1, 1);
-
-        passwordLineEdit = new QLineEdit(LoginWidget);
-        passwordLineEdit->setObjectName(QString::fromUtf8("passwordLineEdit"));
-        passwordLineEdit->setFont(font);
-        passwordLineEdit->setEchoMode(QLineEdit::Password);
-
-        gridLayout->addWidget(passwordLineEdit, 3, 2, 1, 1);
-
-        passwordLabel = new QLabel(LoginWidget);
-        passwordLabel->setObjectName(QString::fromUtf8("passwordLabel"));
-        passwordLabel->setFont(font);
-
-        gridLayout->addWidget(passwordLabel, 3, 1, 1, 1);
-
-        horizontalSpacer_5 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_5, 1, 4, 1, 1);
+        gridLayout->addItem(horizontalSpacer_7, 4, 0, 1, 1);
 
         horizontalSpacer_6 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_6, 1, 0, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(20, 148, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 4, 2, 1, 1);
-
         userNameLineEdit = new QLineEdit(LoginWidget);
         userNameLineEdit->setObjectName(QString::fromUtf8("userNameLineEdit"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
+        font.setPointSize(12);
         userNameLineEdit->setFont(font);
 
         gridLayout->addWidget(userNameLineEdit, 1, 2, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_3, 3, 2, 1, 1);
 
         signInButton = new QPushButton(LoginWidget);
         signInButton->setObjectName(QString::fromUtf8("signInButton"));
@@ -102,48 +80,59 @@ public:
 
         gridLayout->addWidget(signInButton, 1, 3, 1, 1);
 
+        horizontalSpacer_5 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_5, 1, 4, 1, 1);
+
+        userNameLabel = new QLabel(LoginWidget);
+        userNameLabel->setObjectName(QString::fromUtf8("userNameLabel"));
+        userNameLabel->setFont(font);
+        userNameLabel->setTextFormat(Qt::AutoText);
+
+        gridLayout->addWidget(userNameLabel, 1, 1, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 148, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 5, 2, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 4, 4, 1, 1);
+
         verticalSpacer = new QSpacerItem(20, 227, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer, 0, 2, 1, 1);
 
-        forgetPasswordButton = new QPushButton(LoginWidget);
-        forgetPasswordButton->setObjectName(QString::fromUtf8("forgetPasswordButton"));
-        forgetPasswordButton->setFont(font);
+        passwordLineEdit = new QLineEdit(LoginWidget);
+        passwordLineEdit->setObjectName(QString::fromUtf8("passwordLineEdit"));
+        passwordLineEdit->setFont(font);
+        passwordLineEdit->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(forgetPasswordButton, 3, 3, 1, 1);
+        gridLayout->addWidget(passwordLineEdit, 4, 2, 1, 1);
 
-        horizontalSpacer_3 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        passwordLabel = new QLabel(LoginWidget);
+        passwordLabel->setObjectName(QString::fromUtf8("passwordLabel"));
+        passwordLabel->setFont(font);
 
-        gridLayout->addItem(horizontalSpacer_3, 3, 4, 1, 1);
+        gridLayout->addWidget(passwordLabel, 4, 1, 1, 1);
 
         signUpButton = new QPushButton(LoginWidget);
         signUpButton->setObjectName(QString::fromUtf8("signUpButton"));
         signUpButton->setFont(font);
         signUpButton->setFocusPolicy(Qt::StrongFocus);
 
-        gridLayout->addWidget(signUpButton, 2, 3, 1, 1);
-
-        horizontalSpacer_4 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_4, 2, 4, 1, 1);
-
-        horizontalSpacer_7 = new QSpacerItem(228, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_7, 3, 0, 1, 1);
-
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(verticalSpacer_3, 2, 2, 1, 1);
+        gridLayout->addWidget(signUpButton, 4, 3, 1, 1);
 
         LoginWindow->setCentralWidget(LoginWidget);
         statusBar = new QStatusBar(LoginWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         LoginWindow->setStatusBar(statusBar);
+        QWidget::setTabOrder(userNameLineEdit, passwordLineEdit);
+        QWidget::setTabOrder(passwordLineEdit, signInButton);
 
         retranslateUi(LoginWindow);
         QObject::connect(signInButton, SIGNAL(clicked(bool)), LoginWindow, SLOT(onSignInButtonClicked(bool)));
         QObject::connect(signUpButton, SIGNAL(clicked(bool)), LoginWindow, SLOT(onSignUpButtonClicked(bool)));
-        QObject::connect(forgetPasswordButton, SIGNAL(clicked(bool)), LoginWindow, SLOT(onForgetPasswordButtonClicked(bool)));
 
         QMetaObject::connectSlotsByName(LoginWindow);
     } // setupUi
@@ -151,11 +140,13 @@ public:
     void retranslateUi(QMainWindow *LoginWindow)
     {
         LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "LoginWindow", nullptr));
+        signInButton->setText(QCoreApplication::translate("LoginWindow", "\347\231\273\345\275\225", nullptr));
+#if QT_CONFIG(shortcut)
+        signInButton->setShortcut(QCoreApplication::translate("LoginWindow", "Return", nullptr));
+#endif // QT_CONFIG(shortcut)
         userNameLabel->setText(QCoreApplication::translate("LoginWindow", "\347\224\250\346\210\267\345\220\215\357\274\232", nullptr));
         passwordLineEdit->setText(QString());
         passwordLabel->setText(QCoreApplication::translate("LoginWindow", "\345\257\206   \347\240\201\357\274\232", nullptr));
-        signInButton->setText(QCoreApplication::translate("LoginWindow", "\347\231\273\345\275\225", nullptr));
-        forgetPasswordButton->setText(QCoreApplication::translate("LoginWindow", "\346\211\276\345\233\236\345\257\206\347\240\201", nullptr));
         signUpButton->setText(QCoreApplication::translate("LoginWindow", "\346\263\250\345\206\214", nullptr));
     } // retranslateUi
 

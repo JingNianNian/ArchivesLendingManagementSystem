@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SignUpWindow_t {
-    QByteArrayData data[3];
-    char stringdata0[22];
+    QByteArrayData data[13];
+    char stringdata0[186];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,10 +34,24 @@ static const qt_meta_stringdata_SignUpWindow_t qt_meta_stringdata_SignUpWindow =
     {
 QT_MOC_LITERAL(0, 0, 12), // "SignUpWindow"
 QT_MOC_LITERAL(1, 13, 7), // "exitWin"
-QT_MOC_LITERAL(2, 21, 0) // ""
+QT_MOC_LITERAL(2, 21, 0), // ""
+QT_MOC_LITERAL(3, 22, 20), // "checkPasswordUseable"
+QT_MOC_LITERAL(4, 43, 9), // "_password"
+QT_MOC_LITERAL(5, 53, 20), // "checkConfirmPassword"
+QT_MOC_LITERAL(6, 74, 16), // "_confirmPassword"
+QT_MOC_LITERAL(7, 91, 23), // "onRegisterButtonClicked"
+QT_MOC_LITERAL(8, 115, 7), // "clicked"
+QT_MOC_LITERAL(9, 123, 20), // "checkTelephoneNumber"
+QT_MOC_LITERAL(10, 144, 10), // "_telephone"
+QT_MOC_LITERAL(11, 155, 20), // "checkUserNameUseable"
+QT_MOC_LITERAL(12, 176, 9) // "_userName"
 
     },
-    "SignUpWindow\0exitWin\0"
+    "SignUpWindow\0exitWin\0\0checkPasswordUseable\0"
+    "_password\0checkConfirmPassword\0"
+    "_confirmPassword\0onRegisterButtonClicked\0"
+    "clicked\0checkTelephoneNumber\0_telephone\0"
+    "checkUserNameUseable\0_userName"
 };
 #undef QT_MOC_LITERAL
 
@@ -47,7 +61,7 @@ static const uint qt_meta_data_SignUpWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -55,10 +69,24 @@ static const uint qt_meta_data_SignUpWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x06 /* Public */,
+       1,    0,   44,    2, 0x06 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags
+       3,    1,   45,    2, 0x08 /* Private */,
+       5,    1,   48,    2, 0x08 /* Private */,
+       7,    1,   51,    2, 0x08 /* Private */,
+       9,    1,   54,    2, 0x08 /* Private */,
+      11,    1,   57,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
+
+ // slots: parameters
+    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::Bool,    8,
+    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::QString,   12,
 
        0        // eod
 };
@@ -70,6 +98,11 @@ void SignUpWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->exitWin(); break;
+        case 1: _t->checkPasswordUseable((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->checkConfirmPassword((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->onRegisterButtonClicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 4: _t->checkTelephoneNumber((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 5: _t->checkUserNameUseable((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -82,7 +115,6 @@ void SignUpWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject SignUpWindow::staticMetaObject = { {
@@ -114,13 +146,13 @@ int SignUpWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 6;
     }
     return _id;
 }

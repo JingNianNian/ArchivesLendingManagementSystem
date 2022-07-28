@@ -56,6 +56,12 @@
     <ClCompile Include="CurMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -109,13 +115,13 @@
     <ClInclude Include="MyUtility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Paths.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CurMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

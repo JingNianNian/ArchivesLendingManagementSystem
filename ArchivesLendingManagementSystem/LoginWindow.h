@@ -4,6 +4,7 @@
 #include "ui_LoginWindow.h"
 #include <qmessagebox.h>
 #include "MainWindow.h"
+#include "SignUpWindow.h"
 #include "MD5Algorithm.h"
 #include "curMessage.h"
 class LoginWindow : public QMainWindow

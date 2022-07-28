@@ -1,22 +1,542 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SignUpWindowClass</class>
- <widget class="QWidget" name="SignUpWindowClass" >
-  <property name="objectName" >
-   <string notr="true">SignUpWindowClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="SignUpWindowClass">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>879</width>
+    <height>622</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="font">
+   <font>
+    <italic>false</italic>
+   </font>
+  </property>
+  <property name="windowTitle">
    <string>SignUpWindow</string>
-  </property>$centralwidget$
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="1">
+    <widget class="QLabel" name="confirmPasswordLabel">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>确认密码</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="2" colspan="2">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>203</width>
+       <height>186</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="3">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>127</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2" colspan="3">
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="text">
+      <string>用户名仅由大小写字母和数字组成，且必须以字母开头</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="openExternalLinks">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLabel" name="confirmPasswordLabel_2">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>电话</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2" colspan="2">
+    <widget class="QLineEdit" name="telephoneNumber">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLabel" name="outputUserNameUseableLabel">
+     <property name="font">
+      <font>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="text">
+      <string>请输入用户名</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="text">
+      <string>请再次输入密码</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="openExternalLinks">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="2">
+    <widget class="QLineEdit" name="confirmPassword">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>182</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="outputPasswordUseableLabel">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>请输入密码</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QLineEdit" name="newUserName">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5">
+    <spacer name="horizontalSpacer_6">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>213</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="2" colspan="2">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>36</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="2" colspan="3">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="text">
+      <string>密码需要包含A-Z，a-z，0-9其中两种组合，并且长度介于6-18之间</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="openExternalLinks">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="newUserNameLabel">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>用户名</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>258</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="2" colspan="2">
+    <widget class="QLineEdit" name="newPassword">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="newPasswordLabel">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>密码</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>258</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>258</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="5">
+    <spacer name="horizontalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>182</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="9" column="3">
+    <widget class="QPushButton" name="registerButton">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>注册</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QLabel" name="outputConfirmPasswordUseableLabel">
+     <property name="text">
+      <string>请确认密码</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <spacer name="horizontalSpacer_7">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="7" column="5">
+    <spacer name="horizontalSpacer_8">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="7" column="4">
+    <widget class="QLabel" name="outputTelephoneUseableLabel">
+     <property name="text">
+      <string>请输入电话</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
- <connections/>
-</UI>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>newUserName</tabstop>
+  <tabstop>newPassword</tabstop>
+  <tabstop>confirmPassword</tabstop>
+  <tabstop>telephoneNumber</tabstop>
+  <tabstop>registerButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>newUserName</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SignUpWindowClass</receiver>
+   <slot>checkUserNameUseable(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>614</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newPassword</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SignUpWindowClass</receiver>
+   <slot>checkPasswordUseable(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>confirmPassword</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SignUpWindowClass</receiver>
+   <slot>checkConfirmPassword(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>506</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>642</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>registerButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>SignUpWindowClass</receiver>
+   <slot>onRegisterButtonClicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>532</x>
+     <y>436</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>617</x>
+     <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>telephoneNumber</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SignUpWindowClass</receiver>
+   <slot>checkTelephoneNumber(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>checkUserNameUseable(QString)</slot>
+  <slot>checkPasswordUseable(QString)</slot>
+  <slot>checkConfirmPassword(QString)</slot>
+  <slot>onRegisterButtonClicked(bool)</slot>
+  <slot>checkTelephoneNumber(QString)</slot>
+ </slots>
+</ui>

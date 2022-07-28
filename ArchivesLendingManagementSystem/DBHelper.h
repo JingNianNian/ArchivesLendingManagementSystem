@@ -13,7 +13,7 @@ using namespace std;
 class dbHelper
 {
 private:
-	QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");;
+	QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
 	bool open = false;
 public:
 	dbHelper();
@@ -22,6 +22,8 @@ public:
 	bool closeDB();
 	
 	bool checkLogin(QString userName, QString password);
+
+	QSqlTableModel* getTableModel(QString tableName);
 
 	user getUser(QString userName);
 	vector<user> getAllUser();
@@ -50,14 +52,12 @@ public:
 	borrowRecord getRecordByGuid(QString guid);
 	vector<borrowRecord> getAllRecord();
 	vector<borrowRecord> getRecordByUser(user _u);
-	vector<borrowRecord> getUnDealRecord();
-	vector<borrowRecord> getDealRecord();
 	vector<borrowRecord> getRocordByFileTitle(file _f);
-	vector<borrowRecord> getOutOfLimitTimeRecord(myTime _t);
 	bool checkRecord(borrowRecord _bR);
 	bool addRecord(borrowRecord _bR);
 	bool setBorrowTime(borrowRecord _bR);
 	bool setReturnTime(borrowRecord _bR);
+	bool setIsReturn(borrowRecord _bR);
 	bool setIsDealWith(borrowRecord _bR);
 	bool setDealResult(borrowRecord _bR);
 	bool deleteRecord(borrowRecord _bR);

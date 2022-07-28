@@ -4,16 +4,21 @@
 LoginWindow::LoginWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
-
 	ui.setupUi(this);
 	dbHelper db;
-	db.openDB("localhost", "ALMSdb", "ALMStest", "123456");
+	myLog::writeInfoLog(string("start Application"));
+	if (!db.openDB("localhost", "ALMSdb", "ALMStest", "123456")) {
+		QMessageBox::about(NULL, "Message", "数据库连接失败！");
+		exit(0);
+	}
+	myLog::setLogPath();
+	
 	curMessage::setDbHelper(db);
 }
 
 LoginWindow::~LoginWindow()
 {
-	
+	myLog::writeInfoLog(string("close Application"));
 }
 
 int LoginWindow::onSignInButtonClicked(bool cked)
@@ -27,7 +32,7 @@ int LoginWindow::onSignInButtonClicked(bool cked)
 		if (curMessage::db.checkLogin(userName, password)) {
 			QMessageBox::about(NULL, "Message", "登陆成功！");
 			user curUser = curMessage::db.getUser(userName);
-
+			curMessage::setCurUser(curUser);
 			MainWindow* mw = new MainWindow();
 			mw->setGeometry(this->geometry());
 			this->hide();
@@ -45,7 +50,11 @@ int LoginWindow::onSignInButtonClicked(bool cked)
 
 int LoginWindow::onSignUpButtonClicked(bool cked)
 {
-	
+	SignUpWindow* mw = new SignUpWindow();
+	mw->setGeometry(this->geometry());
+	this->hide();
+	mw->show();
+	connect(mw, SIGNAL(exitWin()), this, SLOT(show()));
 	return 0;
 }
 

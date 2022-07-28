@@ -15,53 +15,8 @@
   </property>
   <widget class="QWidget" name="LoginWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="1">
-     <widget class="QLabel" name="userNameLabel">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>用户名：</string>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::AutoText</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QLineEdit" name="passwordLineEdit">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="passwordLabel">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>密   码：</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="4">
-     <spacer name="horizontalSpacer_5">
+    <item row="4" column="0">
+     <spacer name="horizontalSpacer_7">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -92,7 +47,81 @@
       </property>
      </spacer>
     </item>
-    <item row="4" column="2">
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="userNameLineEdit">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Minimum</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="signInButton">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>登录</string>
+      </property>
+      <property name="shortcut">
+       <string>Return</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <spacer name="horizontalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Minimum</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>228</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="userNameLabel">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>用户名：</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
      <spacer name="verticalSpacer_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -108,28 +137,21 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="2">
-     <widget class="QLineEdit" name="userNameLineEdit">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <pointsize>12</pointsize>
-       </font>
+    <item row="4" column="4">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="signInButton">
-      <property name="font">
-       <font>
-        <family>Microsoft YaHei UI</family>
-        <pointsize>12</pointsize>
-       </font>
+      <property name="sizeType">
+       <enum>QSizePolicy::Minimum</enum>
       </property>
-      <property name="text">
-       <string>登录</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>228</width>
+        <height>20</height>
+       </size>
       </property>
-     </widget>
+     </spacer>
     </item>
     <item row="0" column="2">
      <spacer name="verticalSpacer">
@@ -147,8 +169,8 @@
       </property>
      </spacer>
     </item>
-    <item row="3" column="3">
-     <widget class="QPushButton" name="forgetPasswordButton">
+    <item row="4" column="2">
+     <widget class="QLineEdit" name="passwordLineEdit">
       <property name="font">
        <font>
         <family>Microsoft YaHei UI</family>
@@ -156,27 +178,27 @@
        </font>
       </property>
       <property name="text">
-       <string>找回密码</string>
+       <string/>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
     </item>
-    <item row="3" column="4">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="4" column="1">
+     <widget class="QLabel" name="passwordLabel">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Minimum</enum>
+      <property name="text">
+       <string>密   码：</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>228</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
-    <item row="2" column="3">
+    <item row="4" column="3">
      <widget class="QPushButton" name="signUpButton">
       <property name="font">
        <font>
@@ -192,59 +214,16 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="4">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Minimum</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>228</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer_7">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Minimum</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>228</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="2">
-     <spacer name="verticalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Minimum</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>userNameLineEdit</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+  <tabstop>signInButton</tabstop>
+ </tabstops>
  <resources>
   <include location="LoginWindow.qrc"/>
  </resources>
@@ -272,28 +251,12 @@
    <slot>onSignUpButtonClicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>626</x>
-     <y>298</y>
+     <x>657</x>
+     <y>351</y>
     </hint>
     <hint type="destinationlabel">
      <x>724</x>
      <y>293</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>forgetPasswordButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>LoginWindow</receiver>
-   <slot>onForgetPasswordButtonClicked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>586</x>
-     <y>346</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>675</x>
-     <y>393</y>
     </hint>
    </hints>
   </connection>

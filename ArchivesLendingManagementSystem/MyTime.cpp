@@ -17,7 +17,13 @@ myTime::myTime()
 	setData();
 }
 
-myTime::myTime(int _timeStamp)
+myTime::myTime(QDateTime q)
+{
+	timeStamp = q.toTime_t();
+	setData();
+}
+
+myTime::myTime(time_t _timeStamp)
 {
 	timeStamp = _timeStamp;
 	setData();
@@ -55,6 +61,11 @@ QString myTime::getDate()
 QString myTime::getDateAndTime()
 {
 	return getDate() + " " + getTime();
+}
+
+QDateTime myTime::toQDateTime()
+{
+	return QDateTime(QDate(year, month, day), QTime(hh, mm, ss));
 }
 
 myTime& myTime::operator+=(const myTime& rhs)
@@ -97,6 +108,9 @@ myTime& myTime::operator+=(const myTime& rhs)
 			}
 		}
 	}
+	else {
+		//log operation error
+	}
 	return *this;
 }
 
@@ -112,7 +126,7 @@ bool myTime::operator<(const myTime& rhs)
 	return false;
 }
 
-bool myTime::operator=(const myTime& rhs)
+bool myTime::operator==(const myTime& rhs)
 {
 	if (this->day == rhs.day &&
 		this->year == rhs.year &&
@@ -133,4 +147,14 @@ bool myTime::operator>(const myTime& rhs)
 		else continue;
 	}
 	return false;
+}
+
+bool myTime::operator>=(const myTime& rhs)
+{
+	return ((*this) > rhs) || ((*this) == rhs);
+}
+
+bool myTime::operator<=(const myTime& rhs)
+{
+	return ((*this) < rhs) || ((*this) == rhs);
 }
